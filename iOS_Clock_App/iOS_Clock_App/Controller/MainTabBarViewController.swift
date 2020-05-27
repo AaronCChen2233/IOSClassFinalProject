@@ -14,12 +14,15 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         /**Just For test now*/
         view.backgroundColor = .white
-        let firstViewController = ViewController()
-        firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let firstViewController = StopwatchViewController()
+        firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 0)
         let secondViewController = ViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         let tabBarList = [firstViewController, secondViewController]
         viewControllers = tabBarList
+        
+        
+        
         
     }
 
