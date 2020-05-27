@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */; };
 		7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A6247DCA9E0028891C /* AppDelegate.swift */; };
 		7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */; };
 		7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56AA247DCA9E0028891C /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		7B1F56A3247DCA9E0028891C /* iOS_Clock_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Clock_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B1F56A6247DCA9E0028891C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B0A0EBE247F129D00313926 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				7B1F56A6247DCA9E0028891C /* AppDelegate.swift */,
+				7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */,
+				7B1F56AF247DCAA20028891C /* Assets.xcassets */,
+				7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		7B0A0EBF247F12CF00313926 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B1F56AA247DCA9E0028891C /* ViewController.swift */,
+				7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B0A0EC0247F12DC00313926 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B0A0EC1247F12E700313926 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7B0A0EC2247F12F700313926 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		7B1F569A247DCA9E0028891C = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +97,11 @@
 		7B1F56A5247DCA9E0028891C /* iOS_Clock_App */ = {
 			isa = PBXGroup;
 			children = (
-				7B1F56A6247DCA9E0028891C /* AppDelegate.swift */,
-				7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */,
-				7B1F56AA247DCA9E0028891C /* ViewController.swift */,
-				7B1F56AF247DCAA20028891C /* Assets.xcassets */,
-				7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */,
+				7B0A0EC2247F12F700313926 /* Utils */,
+				7B0A0EC0247F12DC00313926 /* Model */,
+				7B0A0EC1247F12E700313926 /* View */,
+				7B0A0EBF247F12CF00313926 /* Controller */,
+				7B0A0EBE247F129D00313926 /* Supporting */,
 				7B1F56B4247DCAA20028891C /* Info.plist */,
 			);
 			path = iOS_Clock_App;
@@ -135,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */,
+				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
 			);
