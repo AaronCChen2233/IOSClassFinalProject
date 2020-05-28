@@ -25,19 +25,22 @@ class StopwatchViewController: UIViewController {
         
         /**lapButton Setting*/
         lapButton = UIButton(type: .system)
+        lapButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         lapButton.setTitle("Lap", for: .normal)
-//        lapButton.backgroundColor = .gray
+        lapButton.backgroundColor = .gray
         lapButton.clipsToBounds = true
         lapButton.layer.cornerRadius = lapButton.bounds.size.width/2;
         
         /**stopButton Setting*/
         
         startStopButton = UIButton(type: .system)
+        startStopButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         startStopButton.setTitle("Stop", for: .normal)
         startStopButton.backgroundColor = .red
         
+        /**For circle Button*/
         startStopButton.clipsToBounds = true
-        startStopButton.layer.cornerRadius = lapButton.bounds.size.width/2;
+        startStopButton.layer.cornerRadius = startStopButton.bounds.size.width/2;
         
         /**lapTableView Setting*/
         lapTableView = UITableView()
@@ -51,7 +54,7 @@ class StopwatchViewController: UIViewController {
         /**Set constraint*/
         timeGoesLable.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,size: CGSize(width: 0, height: 400))
         
-        lapButton.anchors(topAnchor: timeGoesLable.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil,size: CGSize(width: 100, height: 100))
+        lapButton.anchors(topAnchor: timeGoesLable.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil, size: CGSize(width: 100, height: 100))
         
         startStopButton.anchors(topAnchor: timeGoesLable.bottomAnchor, leadingAnchor: nil, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,size: CGSize(width: 100, height: 100))
         

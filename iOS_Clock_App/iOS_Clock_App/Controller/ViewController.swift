@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         /**Just For test now*/
-        view.backgroundColor = .blue
+//        view.backgroundColor = .blue
     }
 
 

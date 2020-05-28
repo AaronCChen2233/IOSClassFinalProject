@@ -12,8 +12,9 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         /**Just For test now*/
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         let firstViewController = StopwatchViewController()
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 0)
         let secondViewController = ViewController()
