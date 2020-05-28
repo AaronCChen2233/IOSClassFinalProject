@@ -13,14 +13,14 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         /**Just For test now*/
-        view.backgroundColor = .white
-        let firstViewController = ViewController()
+        
+        let firstViewController = ViewController()        
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         let secondViewController = ViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         let tabBarList = [firstViewController, secondViewController]
+        UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
-        
     }
 
     
