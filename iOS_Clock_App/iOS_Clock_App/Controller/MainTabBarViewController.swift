@@ -17,13 +17,14 @@ class MainTabBarViewController: UITabBarController {
 //        view.backgroundColor = .white
         let firstViewController = StopwatchViewController()
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 0)
+
         let secondViewController = ViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         let tabBarList = [firstViewController, secondViewController]
         viewControllers = tabBarList
         
-        
-        
+        UITabBar.appearance().tintColor = colorThem.highlightOrange
+        print(traitCollection.userInterfaceStyle.rawValue)
         
     }
 

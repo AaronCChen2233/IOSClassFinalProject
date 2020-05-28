@@ -32,7 +32,6 @@ class StopwatchViewController: UIViewController {
         lapButton.layer.cornerRadius = lapButton.bounds.size.width/2;
         
         /**stopButton Setting*/
-        
         startStopButton = UIButton(type: .system)
         startStopButton.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         startStopButton.setTitle("Stop", for: .normal)
