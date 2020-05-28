@@ -30,11 +30,6 @@
 		7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexRgb.swift"; sourceTree = "<group>"; };
 		7B0A0EC7247F180300313926 /* HorizontalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		7B0A0EC8247F180300313926 /* VerticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
-
-		7B0A0ECD247F29A600313926 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
-
-		7B0B3D69248033F7007B0603 /* Them.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Them.swift; sourceTree = "<group>"; };
-
 		7B1F56A3247DCA9E0028891C /* iOS_Clock_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Clock_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B1F56A6247DCA9E0028891C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +74,6 @@
 		7B0A0EC0247F12DC00313926 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7B0B3D69248033F7007B0603 /* Them.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,7 +196,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */,
-				7B0B3D6A248033F7007B0603 /* Them.swift in Sources */,
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
 				7B0A0ECE247F29A600313926 /* StopwatchViewController.swift in Sources */,

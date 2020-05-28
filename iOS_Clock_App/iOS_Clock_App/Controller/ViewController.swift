@@ -14,7 +14,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         /**Just For test now*/
+<<<<<<< HEAD
 //        view.backgroundColor = .blue
+=======
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        let testLable = UILabel()
+        testLable.text = "This is a test"
+        view.addSubview(testLable)
+        testLable.matchParent()
+        
+>>>>>>> master
     }
 
 
