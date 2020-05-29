@@ -41,7 +41,7 @@ class AlarmTableViewCell: UITableViewCell {
     }
     
     @objc func tappedSwitch(_ sender : UISwitch!) {
-        self.textLabel?.textColor = switchAlarm.isOn ? .black : .lightGray
-        self.detailTextLabel?.textColor = switchAlarm.isOn ? .black : .lightGray
+        self.textLabel?.textColor = sender.isOn ? .black : .lightGray
+        self.detailTextLabel?.textColor = sender.isOn ? .black : .lightGray
     }
 }
