@@ -11,14 +11,15 @@ import UIKit
 class AlarmTableViewController: UITableViewController {
     
     let cellIdentifier = "AlarmCell"
-    var alarms: [Alarm] = Alarm.initialize()
+    
+    var alarms: [Alarm] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alarm"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = editButtonItem
-        tableView.allowsMultipleSelectionDuringEditing = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewAlarmTVC(_:)))
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 
@@ -34,5 +35,17 @@ class AlarmTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AlarmTableViewCell
         cell.alarm = alarms[indexPath.row]
         return cell
+    }
+    
+    func addNewAlarm(new: Alarm) {
+      alarms.append(new)
+      tableView.insertRows(at: [IndexPath(row: alarms.count - 1, section: 0)], with: .automatic)
+    }
+    
+    @objc func showNewAlarmTVC(_ sender: UIBarButtonItem) {
+        let addAlarmTVC = AddAlarmTableViewController(style: .grouped)
+        let embedNav = UINavigationController(rootViewController: addAlarmTVC)
+        addAlarmTVC.addAlarm = addNewAlarm
+        present(embedNav, animated: true, completion: nil)
     }
 }
