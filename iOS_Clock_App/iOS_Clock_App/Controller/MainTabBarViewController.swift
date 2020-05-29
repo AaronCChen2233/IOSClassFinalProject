@@ -15,7 +15,7 @@ class MainTabBarViewController: UITabBarController {
         
         /**Just For test now*/
         
-        let firstViewController = ViewController()        
+        let firstViewController = StopwatchViewController()        
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
 
         let secondViewController = ViewController()
