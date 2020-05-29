@@ -9,10 +9,31 @@
 import UIKit
 
 class AlarmTableViewCell: UITableViewCell {
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    var alarm: Alarm! {
+      didSet {
+        updateView()
+      }
     }
+    
+    private var switchAlarm: UISwitch = {
+        let us = UISwitch(frame: CGRect())
+        us.translatesAutoresizingMaskIntoConstraints = false
+        return us
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        self.textLabel?.font = UIFont.systemFont(ofSize: 45.0)
+        self.accessoryView = switchAlarm
+    }
+    
+    private func updateView() {
+        self.textLabel!.text = alarm.dateformat()
+        self.detailTextLabel?.text = "\(alarm.label), \(alarm.description())"
+        switchAlarm.setOn(alarm.isOn, animated: true)
+    }
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

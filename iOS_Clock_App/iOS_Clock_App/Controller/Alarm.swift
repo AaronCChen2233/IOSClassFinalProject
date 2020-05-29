@@ -10,9 +10,10 @@ import Foundation
 
 struct Alarm {
     var date: Date
-    var repeatWeekdays: [weekDays]
+    var repeatWeekdays: Set<weekDays>
     var label: String
     var sound: String
+    var isOn: Bool = true
     
     enum weekDays {
         case mon
@@ -22,6 +23,30 @@ struct Alarm {
         case fri
         case sat
         case sun
+    }
+    
+    static func initialize() -> [Alarm] {
+        return [
+            Alarm(date: Date().addingTimeInterval(TimeInterval(86400*Int(arc4random_uniform(1)))), repeatWeekdays: [.mon, .thu], label: "Mon and Tue", sound: "hard something"),
+            Alarm(date: Date().addingTimeInterval(TimeInterval(86400*Int(arc4random_uniform(1)))), repeatWeekdays: [.sat, .sun], label: "Weenends", sound: "happy something"),
+            Alarm(date: Date().addingTimeInterval(TimeInterval(86400*Int(arc4random_uniform(1)))), repeatWeekdays: [.fri], label: "TGIF", sound: "exciting something", isOn: false)
+        ]
+    }
+    
+    func dateformat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self.date)
+    }
+    
+    func description() -> String {
+        guard self.repeatWeekdays.count != 0 else { return "" }
+        guard self.repeatWeekdays.count != 1 else { return "Every \(self.repeatWeekdays.first!.rawValue)" }
+        guard self.repeatWeekdays.count < 7 else { return "Everyday"}
+
+        if self.repeatWeekdays.count == 2 && self.repeatWeekdays.contains(.sat) && self.repeatWeekdays.contains(.sun) { return "Every Weekend" }
+        if self.repeatWeekdays.filter({$0 != .sat && $0 != .sun }).count == 5 { return "Every Weekday"}
+        return self.repeatWeekdays.reduce("", { $0 + $1.rawValue[..<$1.rawValue.index($1.rawValue.startIndex, offsetBy: 3)] + " "})
     }
 }
 
