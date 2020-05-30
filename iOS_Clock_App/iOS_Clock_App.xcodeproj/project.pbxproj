@@ -17,6 +17,8 @@
 		7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56AA247DCA9E0028891C /* ViewController.swift */; };
 		7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56AF247DCAA20028891C /* Assets.xcassets */; };
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
+		B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */; };
+		B0814FDE2481BC640087DC6A /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDD2481BC640087DC6A /* Week.swift */; };
 		B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */; };
 		B0DBB9B624806B18000212EC /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */; };
 		B0DBB9BA24806CB3000212EC /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B924806CB3000212EC /* Alarm.swift */; };
@@ -38,6 +40,8 @@
 		7B1F56AF247DCAA20028891C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B1F56B2247DCAA20028891C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
+		B0814FDD2481BC640087DC6A /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Week.swift; path = iOS_Clock_App/Controller/Week.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = iOS_Clock_App/AlarmTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B924806CB3000212EC /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = iOS_Clock_App/Controller/Alarm.swift; sourceTree = SOURCE_ROOT; };
@@ -75,6 +79,7 @@
 				7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */,
 				B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */,
 				B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */,
+				B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -83,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				B0DBB9B924806CB3000212EC /* Alarm.swift */,
+				B0814FDD2481BC640087DC6A /* Week.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,10 +214,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */,
+				B0814FDE2481BC640087DC6A /* Week.swift in Sources */,
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
 				B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */,
+				B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */,
 				B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */,
 				B0DBB9B624806B18000212EC /* AlarmTableViewCell.swift in Sources */,
 				B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */,

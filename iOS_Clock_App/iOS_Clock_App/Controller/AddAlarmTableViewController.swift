@@ -10,23 +10,25 @@ import UIKit
 
 class AddAlarmTableViewController: UITableViewController {
 
+    var newAlarm = Alarm(date: Date(), week: [], label: "Alarm", sound: "Radar")
     private let timeCell = DatePickerTableViewCell()
+    private var repeatWeeks: Set<Week.weekType> = []
     private var repeatCell: RightDetailTableViewCell = {
         let tc = RightDetailTableViewCell(style: .value1, reuseIdentifier: nil)
         tc.textLabel?.text = "Repeat"
-        tc.detailTextLabel?.text = "Never"
+        tc.accessoryType = .disclosureIndicator
         return tc
     }()
     private var labelCell: RightDetailTableViewCell = {
         let tc = RightDetailTableViewCell(style: .value1, reuseIdentifier: nil)
         tc.textLabel?.text = "Label"
-        tc.detailTextLabel?.text = "Alarm"
+        tc.accessoryType = .disclosureIndicator
         return tc
     }()
     private var soundCell: RightDetailTableViewCell = {
         let tc = RightDetailTableViewCell(style: .value1, reuseIdentifier: nil)
         tc.textLabel?.text = "Sound"
-        tc.detailTextLabel?.text = "Radar"
+        tc.accessoryType = .disclosureIndicator
         return tc
     }()
     
@@ -44,9 +46,14 @@ class AddAlarmTableViewController: UITableViewController {
     }
     
     @objc func saveTapped(_ sender: UIBarButtonItem) {
-        let newAlarm = Alarm(date: timeCell.datePicker.date, repeatWeekdays: [], label: labelCell.detailTextLabel!.text!, sound: soundCell.detailTextLabel!.text!)
+        newAlarm.date = timeCell.datePicker.date
         addAlarm?(newAlarm)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func updateRepeatWeeks(new: Set<Week.weekType>) {
+        newAlarm.week = new
+        tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,11 +69,21 @@ class AddAlarmTableViewController: UITableViewController {
             case (0, 0):
                 return timeCell
             case (1, 0):
-                return repeatCell
+                let cell = repeatCell
+                if let txt = newAlarm.getWeekDescription() {
+                    cell.detailTextLabel?.text = txt
+                } else {
+                    cell.detailTextLabel?.text = "Never"
+                }
+                return cell
             case (1, 1):
-                return labelCell
+                let cell = labelCell
+                cell.detailTextLabel?.text = newAlarm.label
+                return cell
             case (1, 2):
-                return soundCell
+                let cell = soundCell
+                cell.detailTextLabel?.text = newAlarm.sound
+                return cell
             default:
                 return UITableViewCell()
         }
@@ -74,5 +91,21 @@ class AddAlarmTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 216 : 44
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      tableView.deselectRow(at: indexPath, animated: true)
+      
+      switch (indexPath.section, indexPath.row) {
+        case (1, 0):
+            let weekTVC = WeekTableViewController(style: .grouped)
+            weekTVC.curSelectWeeks = newAlarm.week
+            weekTVC.didSelect = updateRepeatWeeks
+            navigationController?.pushViewController(weekTVC, animated: true)
+        default:
+            break
+      }
+      tableView.beginUpdates()
+      tableView.endUpdates()
     }
 }

@@ -31,7 +31,11 @@ class AlarmTableViewCell: UITableViewCell {
     
     private func updateView() {
         self.textLabel!.text = alarm.dateformat()
-        self.detailTextLabel?.text = "\(alarm.label), \(alarm.description())"
+        if let txt = alarm.getWeekDescription() {
+            self.detailTextLabel?.text = "\(alarm.label), \(txt)"
+        } else {
+            self.detailTextLabel?.text = "\(alarm.label)"
+        }
         switchAlarm.setOn(alarm.isOn, animated: true)
         tappedSwitch(switchAlarm)
     }

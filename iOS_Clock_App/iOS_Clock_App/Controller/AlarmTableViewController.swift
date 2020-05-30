@@ -12,7 +12,7 @@ class AlarmTableViewController: UITableViewController {
     
     let cellIdentifier = "AlarmCell"
     
-    var alarms: [Alarm] = []
+    var alarms: [Alarm] = Alarm.initialize()
 
     override func viewDidLoad() {
         super.viewDidLoad()
