@@ -55,6 +55,11 @@ class AddAlarmTableViewController: UITableViewController {
         newAlarm.week = new
         tableView.reloadData()
     }
+    
+    func updateLabel(new: String) {
+        newAlarm.label = new
+        tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -102,6 +107,11 @@ class AddAlarmTableViewController: UITableViewController {
             weekTVC.curSelectWeeks = newAlarm.week
             weekTVC.didSelect = updateRepeatWeeks
             navigationController?.pushViewController(weekTVC, animated: true)
+        case (1, 1):
+            let lTVC = LabelViewController()
+            lTVC.inputText = newAlarm.label
+            lTVC.textInputDone = updateLabel
+            navigationController?.pushViewController(lTVC, animated: true)
         default:
             break
       }
