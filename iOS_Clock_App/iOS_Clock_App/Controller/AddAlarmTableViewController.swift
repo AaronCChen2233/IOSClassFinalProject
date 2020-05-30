@@ -10,7 +10,7 @@ import UIKit
 
 class AddAlarmTableViewController: UITableViewController {
 
-    var newAlarm = Alarm(date: Date(), week: [], label: "Alarm", sound: "Radar")
+    var newAlarm = Alarm(date: Date(), week: [])
     private let timeCell = DatePickerTableViewCell()
     private var repeatWeeks: Set<Week.weekType> = []
     private var repeatCell: RightDetailTableViewCell = {
@@ -60,6 +60,11 @@ class AddAlarmTableViewController: UITableViewController {
         newAlarm.label = new
         tableView.reloadData()
     }
+    
+    func updateSound(new: Sound) {
+        newAlarm.sound = new
+        tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -87,7 +92,7 @@ class AddAlarmTableViewController: UITableViewController {
                 return cell
             case (1, 2):
                 let cell = soundCell
-                cell.detailTextLabel?.text = newAlarm.sound
+                cell.detailTextLabel?.text = newAlarm.sound.name
                 return cell
             default:
                 return UITableViewCell()
@@ -112,6 +117,11 @@ class AddAlarmTableViewController: UITableViewController {
             lTVC.inputText = newAlarm.label
             lTVC.textInputDone = updateLabel
             navigationController?.pushViewController(lTVC, animated: true)
+        case (1, 2):
+            let sTVC = SoundTableViewController()
+            sTVC.curSound = newAlarm.sound
+            sTVC.didSelect = updateSound
+            navigationController?.pushViewController(sTVC, animated: true)
         default:
             break
       }

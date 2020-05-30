@@ -11,16 +11,16 @@ import Foundation
 struct Alarm {
     var date: Date
     var week: Set<Week.weekType>
-    var label: String
-    var sound: String
+    var label: String = "Label"
+    var sound: Sound = Sound.getAllSounds().first!
     var isOn: Bool = true
     
     static func initialize() -> [Alarm] {
         return [
-            Alarm(date: Date(), week: [.thu, .mon, .wed], label: "Mon and Tue", sound: "hard something"),
-            Alarm(date: Date(), week: [.sat, .sun], label: "Weenends", sound: "happy something"),
-            Alarm(date: Date(), week: [.fri], label: "TGIF", sound: "exciting something", isOn: false),
-            Alarm(date: Date(), week: [], label: "TGIF", sound: "exciting something", isOn: false)
+            Alarm(date: Date(), week: [.thu, .mon, .wed], label: "Mon and Tue"),
+            Alarm(date: Date(), week: [.sat, .sun], label: "Weenends"),
+            Alarm(date: Date(), week: [.fri], label: "TGIF", isOn: false),
+            Alarm(date: Date(), week: [], label: "TGIF", isOn: false)
         ]
     }
     

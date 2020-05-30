@@ -18,6 +18,8 @@
 		7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56AF247DCAA20028891C /* Assets.xcassets */; };
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
 		B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0335BFA2482EEC20026F6FA /* LabelViewController.swift */; };
+		B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */; };
+		B03F046E2483212900C1AA16 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F046D2483212900C1AA16 /* Sound.swift */; };
 		B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */; };
 		B0814FDE2481BC640087DC6A /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDD2481BC640087DC6A /* Week.swift */; };
 		B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */; };
@@ -42,6 +44,8 @@
 		7B1F56B2247DCAA20028891C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0335BFA2482EEC20026F6FA /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewController.swift; sourceTree = "<group>"; };
+		B03F046D2483212900C1AA16 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sound.swift; path = iOS_Clock_App/Controller/Sound.swift; sourceTree = SOURCE_ROOT; };
 		B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
 		B0814FDD2481BC640087DC6A /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Week.swift; path = iOS_Clock_App/Controller/Week.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 				7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */,
 				B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */,
 				B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */,
+				B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */,
 				B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */,
 				B0335BFA2482EEC20026F6FA /* LabelViewController.swift */,
 			);
@@ -92,6 +97,7 @@
 			children = (
 				B0DBB9B924806CB3000212EC /* Alarm.swift */,
 				B0814FDD2481BC640087DC6A /* Week.swift */,
+				B03F046D2483212900C1AA16 /* Sound.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,10 +235,12 @@
 				B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */,
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
+				B03F046E2483212900C1AA16 /* Sound.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
 				B0DBB9BA24806CB3000212EC /* Alarm.swift in Sources */,
 				B0DBB9BC24819227000212EC /* AddAlarmTableViewController.swift in Sources */,
+				B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
