@@ -19,6 +19,7 @@
 		7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56AA247DCA9E0028891C /* ViewController.swift */; };
 		7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56AF247DCAA20028891C /* Assets.xcassets */; };
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
+		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		7B1F56AF247DCAA20028891C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B1F56B2247DCAA20028891C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 		7B0A0EC1247F12E700313926 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
+				7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */,
 				7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
 			);
