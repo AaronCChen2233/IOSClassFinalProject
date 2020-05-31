@@ -15,11 +15,11 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     var fractions = 0
     var isRuning = false
     var timer = Timer()
+    var lapDatas = [String]()
     var timeGoesLable : UILabel!
     var lapResetButton : UIButton!
     var startStopButton : UIButton!
     var lapTableView : UITableView!
-    var lapDatas = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,10 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         timeGoesLable = UILabel()
         timeGoesLable.text = "00:00.00"
         timeGoesLable.textAlignment = .center
-        //        timeGoesLable.font = UIFont.systemFont(ofSize: 90)
         /**Set CourierNewPSMT because this fontFamily has same char width*/
         timeGoesLable.font = UIFont(name: "CourierNewPSMT", size: 85)
         
-        /**lapButton Setting*/
+        /**lapResetButton Setting*/
         lapResetButton = UIButton(type: .system)
         lapResetButton.frame = CGRect(x: 0, y: 0, width: buttonHeightAndWidth, height: buttonHeightAndWidth)
         lapResetButton.backgroundColor = .gray
@@ -44,7 +43,7 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         lapResetButton.setTitleColor(.white, for: .normal)
         lapResetButton.addTarget(self, action: #selector(lapOrReset), for: .touchUpInside)
         
-        /**stopButton Setting*/
+        /**startStopButton Setting*/
         startStopButton = UIButton(type: .system)
         startStopButton.frame = CGRect(x: 0, y: 0, width: buttonHeightAndWidth, height: buttonHeightAndWidth)
         startStopButton.clipsToBounds = true
@@ -68,13 +67,10 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         view.addSubview(startStopButton)
         view.addSubview(lapTableView)
         
-        /**Set constraint*/
+        /**Set UIViews constraint*/
         timeGoesLable.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,size: CGSize(width: 0, height: 400))
-        
         lapResetButton.anchors(topAnchor: timeGoesLable.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth) )
-        
         startStopButton.anchors(topAnchor: timeGoesLable.bottomAnchor, leadingAnchor: nil, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth))
-        
         lapTableView.anchors(topAnchor: startStopButton.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: view.bottomAnchor)
     }
     
@@ -130,7 +126,6 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         cell.backgroundColor = UIColor(named: "backgroundColor")
         cell.textLabel?.text = "Lap \(indexPath.row + 1)"
         cell.detailTextLabel?.text = lapDatas[indexPath.row]
-        
         return cell
     }
     
@@ -152,6 +147,7 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func setButtonUI() {
+        /**set buttonUI depend on which state*/
         if isRuning{
             lapResetButton.setTitle("Lap", for: .normal)
             
