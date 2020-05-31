@@ -10,7 +10,8 @@ import UIKit
 
 class AddAlarmTableViewController: UITableViewController {
 
-    var newAlarm = Alarm(date: Date(), week: [])
+    var insertPos: Int?
+    var newAlarm: Alarm = Alarm(date: Date(), week: [])
     private let timeCell = DatePickerTableViewCell()
     private var repeatWeeks: Set<Week.weekType> = []
     private var repeatCell: RightDetailTableViewCell = {
@@ -32,13 +33,14 @@ class AddAlarmTableViewController: UITableViewController {
         return tc
     }()
     
-    var addAlarm: ((Alarm) -> ())?
+    var addAlarm: ((Alarm, Int?) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Alarm"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped(_:)))
+        timeCell.datePicker.date = newAlarm.date
     }
     
     @objc func cancelTapped(_ sender: UIBarButtonItem) {
@@ -47,7 +49,7 @@ class AddAlarmTableViewController: UITableViewController {
     
     @objc func saveTapped(_ sender: UIBarButtonItem) {
         newAlarm.date = timeCell.datePicker.date
-        addAlarm?(newAlarm)
+        addAlarm?(newAlarm, insertPos)
         dismiss(animated: true, completion: nil)
     }
     
