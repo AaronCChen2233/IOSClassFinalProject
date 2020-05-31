@@ -15,10 +15,10 @@ class MainTabBarViewController: UITabBarController {
         
         /**Just For test now*/
         
-        let firstViewController = StopwatchViewController()        
+        let firstViewController = TimerViewController()
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
 
-        let secondViewController = ViewController()
+        let secondViewController = StopwatchViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         let tabBarList = [firstViewController, secondViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
