@@ -14,6 +14,7 @@ struct Alarm {
     var label: String = "Label"
     var sound: Sound = Sound.getAllSounds().first!
     var isOn: Bool = true
+    var notificationIds: [String] = []
     
     static func initialize() -> [Alarm] {
         return [

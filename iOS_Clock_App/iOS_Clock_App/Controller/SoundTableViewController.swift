@@ -8,11 +8,12 @@
 
 import UIKit
 import MediaPlayer
-import AudioToolbox
+import AVFoundation
 
 class SoundTableViewController: UITableViewController {
 
     private let sounds: [Sound] = Sound.getAllSounds()
+    private var bombSoundEffect: AVAudioPlayer?
     var curSound: Sound!
     var didSelect: ((Sound) -> ())?
     
@@ -38,11 +39,21 @@ class SoundTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        AudioServicesDisposeSystemSoundID (curSound.id);
+        bombSoundEffect?.stop()
         let cur = tableView.cellForRow(at: indexPath)?.accessoryType
         tableView.cellForRow(at: indexPath)?.accessoryType = cur == UITableViewCell.AccessoryType.none ? .checkmark : .none
         curSound = sounds[indexPath.row]
-        AudioServicesPlaySystemSound (curSound.id);
+        
+        print(curSound.name)
+        let path: String = Bundle.main.path(forResource: "\(curSound.name).mp3", ofType:nil)!
+        print(path)
+        let url = URL(fileURLWithPath: path)
+        do {
+            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.play()
+        } catch {
+            print("sound erorr.")
+        }
         tableView.reloadData()
         didSelect?(curSound)
     }
