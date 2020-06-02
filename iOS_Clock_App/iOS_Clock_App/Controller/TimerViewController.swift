@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 class TimerViewController: UIViewController {
     let buttonHeightAndWidth = 100
@@ -22,8 +23,7 @@ class TimerViewController: UIViewController {
     var timeStackView : UIStackView!
     var timeLable: UILabel!
     var expectedTimeLable : UILabel!
-    
-    //    var circularProgress : UIProgressView!
+    var circularProgress : UICircularProgressRing!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +71,23 @@ class TimerViewController: UIViewController {
         timeStackView = UIStackView(arrangedSubviews: [timeLable, expectedTimeLable])
         timeStackView.axis = .vertical
         timeStackView.alignment = .center
+        timeStackView.backgroundColor = UIColor(named: "backgroundColor")
+        
+        /**circularProgress Setting*/
+        circularProgress = UICircularProgressRing()
+        circularProgress.startAngle = 270
+        circularProgress.innerRingColor = UIColor(named: "highlightOrange")!
+        circularProgress.outerRingColor = UIColor(named: "backgroundColor")!
+        circularProgress.fontColor = UIColor(named: "backgroundColor")!
+        circularProgress.isClockwise = false
+        circularProgress.innerRingWidth = 10
+        circularProgress.minValue = 0
+        circularProgress.style = .ontop
         
         updateTimeUI()
         
         /**Add all view first*/
+        view.addSubview(circularProgress)
         view.addSubview(timeStackView)
         view.addSubview(timePicker)
         view.addSubview(cancelButton)
@@ -88,6 +101,7 @@ class TimerViewController: UIViewController {
         cancelButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth) )
         startPauseButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: nil, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth))
         timeStackView.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,padding: UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 150))
+        circularProgress.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 380))
         
     }
     
@@ -107,11 +121,12 @@ class TimerViewController: UIViewController {
             timer.invalidate()
         }else{
             /**Start*/
-            
             /**If isn't runing reset leftSeconds if isruning just keep leftSeconds and resume*/
             if !isRuning{
                 /**Corvert to seconds*/
                 leftSeconds = (countDownTimerWithSecondsDatePicker.hour * 3600) + (countDownTimerWithSecondsDatePicker.min * 60) + countDownTimerWithSecondsDatePicker.sec
+                
+                circularProgress.maxValue = CGFloat(leftSeconds)
                 /**when start tip set text once*/
                 updateCountDownUI()
             }
@@ -146,7 +161,7 @@ class TimerViewController: UIViewController {
             /**Time 's up*/
             cancelTimer()
         }
-        
+        circularProgress.value = CGFloat(leftSeconds)
         leftSeconds -= 1
     }
     
@@ -191,9 +206,11 @@ class TimerViewController: UIViewController {
     func updateTimeUI(){
         if isRuning {
             timeStackView.isHidden = false
+            circularProgress.isHidden = false
             countDownTimerWithSecondsDatePicker.view.isHidden = true
         }else{
             timeStackView.isHidden = true
+            circularProgress.isHidden = true
             countDownTimerWithSecondsDatePicker.view.isHidden = false
         }
     }
