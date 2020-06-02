@@ -87,7 +87,7 @@ class TimerViewController: UIViewController {
         timePicker.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,size: CGSize(width: 0, height: 400))
         cancelButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth) )
         startPauseButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: nil, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth))
-        timeStackView.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,size: CGSize(width: 0, height: 150))
+        timeStackView.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,padding: UIEdgeInsets(top: 150, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 150))
         
     }
     
@@ -123,10 +123,10 @@ class TimerViewController: UIViewController {
             let exceptTime = calendar.date(byAdding: .second, value: leftSeconds, to: date)
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "h:mm a"
+            formatter.dateFormat = "🔔 h:mm a"
             formatter.amSymbol = "AM"
             formatter.pmSymbol = "PM"
-            expectedTimeLable.text = "🔔 " + formatter.string(from: exceptTime!)
+            expectedTimeLable.text = formatter.string(from: exceptTime!)
         }
         
         isPause.toggle()
@@ -142,7 +142,7 @@ class TimerViewController: UIViewController {
         let s = leftSeconds % 60
         timeLable.text = String(format: "%02d:%02d:%02d", h, m, s)
         
-        if leftSeconds == 0{
+        if leftSeconds <= 0{
             /**Time 's up*/
             cancelTimer()
         }
