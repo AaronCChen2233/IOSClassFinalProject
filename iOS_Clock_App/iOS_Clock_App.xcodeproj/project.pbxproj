@@ -12,7 +12,7 @@
 		7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */; };
 		7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC7247F180300313926 /* HorizontalStackView.swift */; };
 		7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC8247F180300313926 /* VerticalStackView.swift */; };
-		7B0A0ECE247F29A600313926 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7B0A0ECE247F29A600313926 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		7B0B3D6C24805027007B0603 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B3D6B24805027007B0603 /* StopwatchViewController.swift */; };
 		7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A6247DCA9E0028891C /* AppDelegate.swift */; };
 		7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */; };
@@ -21,9 +21,11 @@
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
 		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
+		EF0F0533C1CEE97CFF2DD107 /* Pods_iOS_Clock_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2906C4AA91114BABAB13D6 /* Pods_iOS_Clock_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C2906C4AA91114BABAB13D6 /* Pods_iOS_Clock_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Clock_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		7B0A0EC5247F180300313926 /* UIView+ConstraintLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintLayout.swift"; sourceTree = "<group>"; };
 		7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexRgb.swift"; sourceTree = "<group>"; };
@@ -39,6 +41,8 @@
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
+		9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.debug.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,12 +50,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0F0533C1CEE97CFF2DD107 /* Pods_iOS_Clock_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AC8C4B110ABE77DDE79CE9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C2906C4AA91114BABAB13D6 /* Pods_iOS_Clock_App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F4175C8AEEB017A6AC22A21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */,
+				838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7B0A0EBE247F129D00313926 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +128,8 @@
 			children = (
 				7B1F56A5247DCA9E0028891C /* iOS_Clock_App */,
 				7B1F56A4247DCA9E0028891C /* Products */,
+				6F4175C8AEEB017A6AC22A21 /* Pods */,
+				2AC8C4B110ABE77DDE79CE9D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7B1F56B7247DCAA20028891C /* Build configuration list for PBXNativeTarget "iOS_Clock_App" */;
 			buildPhases = (
+				7F5309C09142638348035A06 /* [CP] Check Pods Manifest.lock */,
 				7B1F569F247DCA9E0028891C /* Sources */,
 				7B1F56A0247DCA9E0028891C /* Frameworks */,
 				7B1F56A1247DCA9E0028891C /* Resources */,
+				CB4285480EC1AB38BA54F919 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +221,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F5309C09142638348035A06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS_Clock_App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB4285480EC1AB38BA54F919 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7B1F569F247DCA9E0028891C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,7 +272,7 @@
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
 				7B0B3D6C24805027007B0603 /* StopwatchViewController.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
-				7B0A0ECE247F29A600313926 /* (null) in Sources */,
+				7B0A0ECE247F29A600313926 /* BuildFile in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
@@ -344,6 +413,7 @@
 		};
 		7B1F56B8247DCAA20028891C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +432,7 @@
 		};
 		7B1F56B9247DCAA20028891C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
