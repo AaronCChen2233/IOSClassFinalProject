@@ -67,7 +67,7 @@
 		B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
 		B0814FDD2481BC640087DC6A /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Week.swift; path = iOS_Clock_App/Controller/Week.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
-		B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = iOS_Clock_App/AlarmTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = iOS_Clock_App/View/AlarmTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B924806CB3000212EC /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = iOS_Clock_App/Controller/Alarm.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmTableViewController.swift; sourceTree = "<group>"; };
 		B0DBB9BD248197BA000212EC /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		7B0A0EC1247F12E700313926 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */,
 				B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */,
+				B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */,
 				B0DBB9BD248197BA000212EC /* RightDetailTableViewCell.swift */,
 			);
 			path = View;

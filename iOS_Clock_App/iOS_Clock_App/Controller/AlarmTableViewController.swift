@@ -25,14 +25,14 @@ class AlarmTableViewController: UITableViewController {
         tableView.allowsSelectionDuringEditing = true
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
-//        let center = UNUserNotificationCenter.current()
-//        center.removeAllDeliveredNotifications()
-//        center.removeAllPendingNotificationRequests()
-//        center.getPendingNotificationRequests(completionHandler: { requests in
-//            for request in requests {
-//                print(request)
-//            }
-//        })
+        // delete all notifications
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        center.getPendingNotificationRequests(completionHandler: { requests in
+            for request in requests {
+                print(request)
+            }
+        })
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,6 +46,13 @@ class AlarmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AlarmTableViewCell
         cell.alarm = alarms[indexPath.row]
+        cell.position = indexPath.row
+        cell.offSwitch = ({ (ids) in
+            self.deleteNotification(Ids: ids!)
+        })
+        cell.onSwitch = ({ (alarm, int) -> ([String]) in
+            return self.setNotifications(alarm: alarm, pos: int)
+        })
         return cell
     }
     
@@ -63,7 +70,7 @@ class AlarmTableViewController: UITableViewController {
             tableView.insertRows(at: [IndexPath(row: lastId, section: 0)], with: .automatic)
         }
     }
-    
+        
     func setNotifications(alarm: Alarm, pos: Int) -> [String] {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
@@ -76,7 +83,7 @@ class AlarmTableViewController: UITableViewController {
         if alarm.week.count == 0 {
             var triggerWeekly = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: alarm.date)
             triggerWeekly.second = 0
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: false)
             let identifier = "alarm-\(pos)-once"
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             center.add(request) { (error) in
@@ -107,7 +114,7 @@ class AlarmTableViewController: UITableViewController {
     
     func deleteNotification(Ids: [String]) {
         let center = UNUserNotificationCenter.current()
-        center.removeDeliveredNotifications(withIdentifiers: Ids)
+        center.removePendingNotificationRequests(withIdentifiers: Ids)
     }
     
     @objc func showNewAlarmTVC(_ sender: UIBarButtonItem) {
@@ -124,7 +131,6 @@ class AlarmTableViewController: UITableViewController {
         let addAlarmTVC = AddAlarmTableViewController(style: .grouped)
         let embedNav = UINavigationController(rootViewController: addAlarmTVC)
         addAlarmTVC.newAlarm = alarms[indexPath.row]
-        addAlarmTVC.addAlarm = addNewAlarm
         addAlarmTVC.insertPos = indexPath.row
         present(embedNav, animated: true, completion: nil)
     }
@@ -144,7 +150,7 @@ extension AlarmTableViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
     }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
     }

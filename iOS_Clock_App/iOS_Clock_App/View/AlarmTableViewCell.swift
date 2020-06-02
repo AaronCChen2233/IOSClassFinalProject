@@ -10,6 +10,10 @@ import UIKit
 
 class AlarmTableViewCell: UITableViewCell {
     
+    var onSwitch: ((Alarm, Int) -> ([String]))!
+    var offSwitch: (([String]?) -> ())!
+    var position: Int!
+
     var alarm: Alarm! {
       didSet {
         updateView()
@@ -37,15 +41,20 @@ class AlarmTableViewCell: UITableViewCell {
             self.detailTextLabel?.text = "\(alarm.label)"
         }
         switchAlarm.setOn(alarm.isOn, animated: true)
-        tappedSwitch(switchAlarm)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     @objc func tappedSwitch(_ sender : UISwitch!) {
         self.textLabel?.textColor = sender.isOn ? .black : .lightGray
         self.detailTextLabel?.textColor = sender.isOn ? .black : .lightGray
+        if sender.isOn  {
+            alarm.notificationIds = onSwitch(alarm, position)
+        } else {
+            offSwitch(alarm.notificationIds)
+        }
     }
 }
