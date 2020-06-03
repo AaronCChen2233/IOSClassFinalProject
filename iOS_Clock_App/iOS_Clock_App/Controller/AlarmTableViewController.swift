@@ -151,6 +151,7 @@ class AlarmTableViewController: UITableViewController {
       if editingStyle == .delete {
         alarms.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        deleteDatabase(for: indexPath.row)
       }
     }
     
@@ -159,6 +160,14 @@ class AlarmTableViewController: UITableViewController {
     private func addDatabase(with alarm: Alarm, for searchId: Int) {
       container.performBackgroundTask { [weak self] context in
         _ = try? ManagedAlarm.CreateOrUpdateAlarm(matching: alarm, with: searchId, in: context)
+        try? context.save()
+        self?.printDatabaseStatistics()
+      }
+    }
+    
+    private func deleteDatabase(for searchId: Int) {
+      container.performBackgroundTask { [weak self] context in
+        _ = try? ManagedAlarm.DeleteAlarm(searchId: searchId, in: context)
         try? context.save()
         self?.printDatabaseStatistics()
       }

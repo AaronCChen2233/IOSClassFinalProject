@@ -12,7 +12,7 @@ import CoreData
 class ManagedAlarm: NSManagedObject {
     class func CreateOrUpdateAlarm(matching alarmInfo: Alarm, with searchId: Int, in context: NSManagedObjectContext) throws -> ManagedAlarm {
       let request: NSFetchRequest<ManagedAlarm> = ManagedAlarm.fetchRequest()
-      request.predicate = NSPredicate(format: "id = %d", alarmInfo.id)
+      request.predicate = NSPredicate(format: "id = %d", searchId)
       
       do {
         let matches = try context.fetch(request)
@@ -41,7 +41,24 @@ class ManagedAlarm: NSManagedObject {
       alarm.week = alarmInfo.week as NSObject
       return alarm
     }
+
     
+    class func DeleteAlarm(searchId: Int, in context: NSManagedObjectContext) throws {
+      let request: NSFetchRequest<ManagedAlarm> = ManagedAlarm.fetchRequest()
+      request.predicate = NSPredicate(format: "id = %d", searchId)
+      
+      do {
+        let matches = try context.fetch(request)
+        if matches.count > 0 {
+          assert(matches.count == 1, "ManagedArticle.findOrCreateArticle -- database inconsistency")
+          let matchedAlarm = matches[0]
+          context.delete(matchedAlarm)
+        }
+      } catch {
+        throw error
+      }
+    }
+
     class func ClearAllData(in context: NSManagedObjectContext) {
         let request: NSFetchRequest<ManagedAlarm> = ManagedAlarm.fetchRequest()
         do {
