@@ -121,6 +121,7 @@ class TimerViewController: UIViewController {
             timer.invalidate()
         }else{
             /**Start*/
+            
             /**If isn't runing reset leftSeconds if isruning just keep leftSeconds and resume*/
             if !isRuning{
                 /**Corvert to seconds*/
@@ -131,6 +132,7 @@ class TimerViewController: UIViewController {
                 updateCountDownUI()
             }
             
+            /**Resume*/
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDownUI), userInfo: nil, repeats: true)
             
             let date = Date()
