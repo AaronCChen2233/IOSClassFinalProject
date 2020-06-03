@@ -27,14 +27,10 @@ class AlarmTableViewController: UITableViewController {
         tableView.allowsSelectionDuringEditing = true
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
+        let center = UNUserNotificationCenter.current()
+        
         // delete all notifications
-//        let center = UNUserNotificationCenter.current()
 //        center.removeAllPendingNotificationRequests()
-//        center.getPendingNotificationRequests(completionHandler: { requests in
-//            for request in requests {
-//                print(request)
-//            }
-//        })
         
         // delete all core data
 //        clearDatabase()
@@ -44,6 +40,14 @@ class AlarmTableViewController: UITableViewController {
         
         // count alarms from Core Data
         printDatabaseStatistics()
+        
+        // count notification
+        center.getPendingNotificationRequests(completionHandler: { requests in
+            for request in requests {
+                print(request)
+            }
+        })
+                
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,11 +61,12 @@ class AlarmTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AlarmTableViewCell
         cell.alarm = alarms[indexPath.row]
-        cell.position = indexPath.row
-        cell.offSwitch = ({ (ids) in
-            self.deleteNotification(Ids: ids!)
+        cell.offSwitch = ({ (alarm) in
+            self.deleteNotification(Ids: alarm.notificationIds)
+            self.updateSwitch(attribute: "isOn", isOn: alarm.isOn, for: alarm.id)
         })
-        cell.onSwitch = ({ (alarm, int) -> ([String]) in
+        cell.onSwitch = ({ (alarm) -> ([String]) in
+            self.updateSwitch(attribute: "isOn", isOn: alarm.isOn, for: alarm.id)
             return self.setNotifications(alarm: alarm)
         })
         return cell
@@ -172,6 +177,15 @@ class AlarmTableViewController: UITableViewController {
         self?.printDatabaseStatistics()
       }
     }
+    
+    private func updateSwitch(attribute: String, isOn: Bool, for searchId: Int) {
+      container.performBackgroundTask { [weak self] context in
+        _ = try? ManagedAlarm.UpdateColumn(attribute: attribute, value: isOn, searchId: searchId, in: context)
+        try? context.save()
+        self?.printDatabaseStatistics()
+      }
+    }
+    
     
     private func clearDatabase() {
       container.performBackgroundTask { [weak self] context in

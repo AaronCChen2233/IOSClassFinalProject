@@ -10,9 +10,8 @@ import UIKit
 
 class AlarmTableViewCell: UITableViewCell {
     
-    var onSwitch: ((Alarm, Int) -> ([String]))!
-    var offSwitch: (([String]?) -> ())!
-    var position: Int!
+    var onSwitch: ((Alarm) -> ([String]))!
+    var offSwitch: ((Alarm) -> ())!
 
     var alarm: Alarm! {
       didSet {
@@ -41,6 +40,9 @@ class AlarmTableViewCell: UITableViewCell {
             self.detailTextLabel?.text = "\(alarm.label)"
         }
         switchAlarm.setOn(alarm.isOn, animated: true)
+        textLabel?.textColor = alarm.isOn ? .black : .lightGray
+        detailTextLabel?.textColor = alarm.isOn ? .black : .lightGray
+
     }
 
     required init?(coder: NSCoder) {
@@ -49,12 +51,12 @@ class AlarmTableViewCell: UITableViewCell {
     
 
     @objc func tappedSwitch(_ sender : UISwitch!) {
-        self.textLabel?.textColor = sender.isOn ? .black : .lightGray
-        self.detailTextLabel?.textColor = sender.isOn ? .black : .lightGray
+        alarm.isOn = !alarm.isOn
         if sender.isOn  {
-            alarm.notificationIds = onSwitch(alarm, position)
+            alarm.notificationIds = onSwitch(alarm)
         } else {
-            offSwitch(alarm.notificationIds)
+            offSwitch(alarm)
         }
+        updateView()
     }
 }
