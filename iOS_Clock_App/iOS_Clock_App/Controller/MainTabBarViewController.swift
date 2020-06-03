@@ -14,14 +14,16 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         /**Just For test now*/
         
-        let firstViewController = ViewController()        
+        let firstViewController = ViewController()
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        let secondViewController = ViewController()
-        secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+
+        let AlarmTVC = AlarmTableViewController(style: .grouped)
+        AlarmTVC.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        let secondViewController = UINavigationController(rootViewController: AlarmTVC)
+        secondViewController.tabBarItem = UITabBarItem(title: "alarm", image: UIImage(named: "alarm_white"), tag: 1)
+
         let tabBarList = [firstViewController, secondViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
     }
-
-    
 }
