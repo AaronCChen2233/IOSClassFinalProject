@@ -14,13 +14,23 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         /**Just For test now*/
+        let rootViewController = WorldClockViewController()
+        rootViewController.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        let worldClockViewController = UINavigationController(rootViewController: rootViewController)
+        worldClockViewController.tabBarItem = UITabBarItem(title: "World Clock", image: UIImage(named: ""), selectedImage: UIImage(named: ""))
         
-        let firstViewController = TimerViewController()
-        firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let AlarmTVC = AlarmTableViewController(style: .grouped)
+        AlarmTVC.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        let alarmViewController = UINavigationController(rootViewController: AlarmTVC)
+        alarmViewController.tabBarItem = UITabBarItem(title: "alarm", image: UIImage(named: "alarm_white"), tag: 2)
+        
+        let stopwatchViewController = StopwatchViewController()
+        stopwatchViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
-        let secondViewController = StopwatchViewController()
-        secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        let tabBarList = [firstViewController, secondViewController]
+        let timerViewController = TimerViewController()
+        timerViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+
+        let tabBarList = [worldClockViewController, alarmViewController, stopwatchViewController, timerViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
 
