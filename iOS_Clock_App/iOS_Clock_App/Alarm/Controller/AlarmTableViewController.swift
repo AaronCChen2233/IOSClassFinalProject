@@ -29,6 +29,13 @@ class AlarmTableViewController: UITableViewController {
 
         let center = UNUserNotificationCenter.current()
         
+        // get permisssion
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+             options: authOptions,
+             completionHandler: {_, _ in }
+        )
+        
         // delete all notifications
 //        center.removeAllPendingNotificationRequests()
         

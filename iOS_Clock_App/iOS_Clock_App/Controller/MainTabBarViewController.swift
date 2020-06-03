@@ -12,18 +12,23 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         /**Just For test now*/
         
-        let firstViewController = ViewController()
+        let firstViewController = TimerViewController()
         firstViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+
+        let secondViewController = StopwatchViewController()
+        secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
         let AlarmTVC = AlarmTableViewController(style: .grouped)
         AlarmTVC.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-        let secondViewController = UINavigationController(rootViewController: AlarmTVC)
-        secondViewController.tabBarItem = UITabBarItem(title: "alarm", image: UIImage(named: "alarm_white"), tag: 1)
+        let thirdViewController = UINavigationController(rootViewController: AlarmTVC)
+        thirdViewController.tabBarItem = UITabBarItem(title: "alarm", image: UIImage(named: "alarm_white"), tag: 2)
 
-        let tabBarList = [firstViewController, secondViewController]
+        let tabBarList = [firstViewController, secondViewController, thirdViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
+
     }
 }

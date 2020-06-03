@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         testLable.text = "This is a test"
         view.addSubview(testLable)
         testLable.matchParent()
-        
+
     }
 
 
