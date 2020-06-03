@@ -17,7 +17,7 @@ class MainTabBarViewController: UITabBarController {
         let rootViewController = WorldClockViewController()
         rootViewController.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
         let worldClockViewController = UINavigationController(rootViewController: rootViewController)
-        worldClockViewController.tabBarItem = UITabBarItem(title: "Stopwatch", image: UIImage(systemName: "globe"), tag: 0)
+        worldClockViewController.tabBarItem = UITabBarItem(title: "World Clock", image: UIImage(systemName: "globe"), tag: 0)
         //worldClockViewController.tabBarItem = UITabBarItem(title: "World Clock", image: UIImage(named: "globe"), selectedImage: UIImage(named: ""))
         
         let AlarmTVC = AlarmTableViewController(style: .grouped)
