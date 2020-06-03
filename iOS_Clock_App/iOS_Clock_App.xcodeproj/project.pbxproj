@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,16 +12,29 @@
 		7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */; };
 		7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC7247F180300313926 /* HorizontalStackView.swift */; };
 		7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0A0EC8247F180300313926 /* VerticalStackView.swift */; };
-		7B0A0ECE247F29A600313926 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		7B0A0ECE247F29A600313926 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		7B0B3D6C24805027007B0603 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B3D6B24805027007B0603 /* StopwatchViewController.swift */; };
 		7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A6247DCA9E0028891C /* AppDelegate.swift */; };
 		7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */; };
-		7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56AA247DCA9E0028891C /* ViewController.swift */; };
 		7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56AF247DCAA20028891C /* Assets.xcassets */; };
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
+		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
+		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
+		868524502487EBA700A970ED /* WorldClocksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244C2487EBA700A970ED /* WorldClocksController.swift */; };
+		868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */; };
+		868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244E2487EBA700A970ED /* WorldClockViewController.swift */; };
+		868524532487EBA700A970ED /* AddClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244F2487EBA700A970ED /* AddClockViewController.swift */; };
+		8685245B2487EBBA00A970ED /* ManagedWorldClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524552487EBBA00A970ED /* ManagedWorldClock.swift */; };
+		8685245C2487EBBA00A970ED /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524562487EBBA00A970ED /* TimeZone.swift */; };
+		8685245D2487EBBA00A970ED /* ManagedTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524572487EBBA00A970ED /* ManagedTimeZone.swift */; };
+		8685245E2487EBBA00A970ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 868524582487EBBA00A970ED /* Model.xcdatamodeld */; };
+		8685245F2487EBBA00A970ED /* WorldClockList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685245A2487EBBA00A970ED /* WorldClockList.swift */; };
+		868524622487EBCB00A970ED /* TimeZoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524612487EBCB00A970ED /* TimeZoneRequest.swift */; };
+		868524662487EBEF00A970ED /* URL+Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524632487EBEF00A970ED /* URL+Params.swift */; };
+		868524672487EBEF00A970ED /* Array+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524642487EBEF00A970ED /* Array+Diff.swift */; };
+		868524682487EBEF00A970ED /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */; };
 		B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275071248751C4009CBB56 /* ManagedAlarm.swift */; };
 		B0275078248751C4009CBB56 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275072248751C4009CBB56 /* Alarm.swift */; };
-		B0275079248751C4009CBB56 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0275073248751C4009CBB56 /* Model.xcdatamodeld */; };
 		B027507A248751C4009CBB56 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275075248751C4009CBB56 /* Sound.swift */; };
 		B027507B248751C4009CBB56 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275076248751C4009CBB56 /* Week.swift */; };
 		B027507F2487521F009CBB56 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027507E2487521E009CBB56 /* AlarmTableViewCell.swift */; };
@@ -42,8 +55,6 @@
 		B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */; };
 		B0E4CC932484BF1300C1A3EA /* cop_car.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B0E4CC912484BF1300C1A3EA /* cop_car.mp3 */; };
 		B0E4CC942484BF1300C1A3EA /* buzz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B0E4CC922484BF1300C1A3EA /* buzz.mp3 */; };
-		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
-		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
 		EF0F0533C1CEE97CFF2DD107 /* Pods_iOS_Clock_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2906C4AA91114BABAB13D6 /* Pods_iOS_Clock_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,13 +69,28 @@
 		7B1F56A3247DCA9E0028891C /* iOS_Clock_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Clock_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B1F56A6247DCA9E0028891C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B1F56A8247DCA9E0028891C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B1F56AA247DCA9E0028891C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7B1F56AF247DCAA20028891C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B1F56B2247DCAA20028891C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
+		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
+		8685244C2487EBA700A970ED /* WorldClocksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClocksController.swift; sourceTree = "<group>"; };
+		8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
+		8685244E2487EBA700A970ED /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
+		8685244F2487EBA700A970ED /* AddClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClockViewController.swift; sourceTree = "<group>"; };
+		868524552487EBBA00A970ED /* ManagedWorldClock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedWorldClock.swift; sourceTree = "<group>"; };
+		868524562487EBBA00A970ED /* TimeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZone.swift; sourceTree = "<group>"; };
+		868524572487EBBA00A970ED /* ManagedTimeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTimeZone.swift; sourceTree = "<group>"; };
+		868524592487EBBA00A970ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8685245A2487EBBA00A970ED /* WorldClockList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockList.swift; sourceTree = "<group>"; };
+		868524612487EBCB00A970ED /* TimeZoneRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneRequest.swift; sourceTree = "<group>"; };
+		868524632487EBEF00A970ED /* URL+Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Params.swift"; sourceTree = "<group>"; };
+		868524642487EBEF00A970ED /* Array+Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Diff.swift"; sourceTree = "<group>"; };
+		868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
+		9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.debug.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.debug.xcconfig"; sourceTree = "<group>"; };
 		B0275071248751C4009CBB56 /* ManagedAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAlarm.swift; sourceTree = "<group>"; };
 		B0275072248751C4009CBB56 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		B0275074248751C4009CBB56 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B0275075248751C4009CBB56 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		B0275076248751C4009CBB56 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		B027507E2487521E009CBB56 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,10 +111,6 @@
 		B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B0E4CC912484BF1300C1A3EA /* cop_car.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cop_car.mp3; sourceTree = "<group>"; };
 		B0E4CC922484BF1300C1A3EA /* buzz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buzz.mp3; sourceTree = "<group>"; };
-		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
-		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
-		9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.debug.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +139,6 @@
 				9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */,
 				838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,10 +156,7 @@
 		7B0A0EBF247F12CF00313926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7B0B3D6B24805027007B0603 /* StopwatchViewController.swift */,
-				7B1F56AA247DCA9E0028891C /* ViewController.swift */,
 				7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */,
-				7B52149C2481D7980092D5B5 /* TimerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +164,7 @@
 		7B0A0EC0247F12DC00313926 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				868524582487EBBA00A970ED /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,7 +172,6 @@
 		7B0A0EC1247F12E700313926 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +183,9 @@
 				7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */,
 				7B0A0EC5247F180300313926 /* UIView+ConstraintLayout.swift */,
 				7B0A0EC8247F180300313926 /* VerticalStackView.swift */,
+				868524642487EBEF00A970ED /* Array+Diff.swift */,
+				868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */,
+				868524632487EBEF00A970ED /* URL+Params.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,8 +211,12 @@
 		7B1F56A5247DCA9E0028891C /* iOS_Clock_App */ = {
 			isa = PBXGroup;
 			children = (
+				8685246B2487ECFD00A970ED /* WorldClock */,
 				B083AEB7248750C2003EB3BC /* Alarm */,
+				8685246F2487EEE100A970ED /* StopwatchView */,
+				868524712487EEF600A970ED /* Timer */,
 				7B0A0EC2247F12F700313926 /* Utils */,
+				868524602487EBCB00A970ED /* NetWork */,
 				7B0A0EC0247F12DC00313926 /* Model */,
 				7B0A0EC1247F12E700313926 /* View */,
 				7B0A0EBF247F12CF00313926 /* Controller */,
@@ -199,6 +224,105 @@
 				7B1F56B4247DCAA20028891C /* Info.plist */,
 			);
 			path = iOS_Clock_App;
+			sourceTree = "<group>";
+		};
+		868524602487EBCB00A970ED /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				868524612487EBCB00A970ED /* TimeZoneRequest.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		8685246A2487ECB100A970ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0275072248751C4009CBB56 /* Alarm.swift */,
+				B0275071248751C4009CBB56 /* ManagedAlarm.swift */,
+				B0275075248751C4009CBB56 /* Sound.swift */,
+				B0275076248751C4009CBB56 /* Week.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8685246B2487ECFD00A970ED /* WorldClock */ = {
+			isa = PBXGroup;
+			children = (
+				8685246E2487ED4300A970ED /* Controller */,
+				8685246D2487ED3600A970ED /* View */,
+				8685246C2487ED1D00A970ED /* Model */,
+			);
+			path = WorldClock;
+			sourceTree = "<group>";
+		};
+		8685246C2487ED1D00A970ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				868524552487EBBA00A970ED /* ManagedWorldClock.swift */,
+				868524562487EBBA00A970ED /* TimeZone.swift */,
+				868524572487EBBA00A970ED /* ManagedTimeZone.swift */,
+				8685245A2487EBBA00A970ED /* WorldClockList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8685246D2487ED3600A970ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8685246E2487ED4300A970ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8685244C2487EBA700A970ED /* WorldClocksController.swift */,
+				8685244E2487EBA700A970ED /* WorldClockViewController.swift */,
+				8685244F2487EBA700A970ED /* AddClockViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8685246F2487EEE100A970ED /* StopwatchView */ = {
+			isa = PBXGroup;
+			children = (
+				868524702487EEE600A970ED /* Controller */,
+			);
+			path = StopwatchView;
+			sourceTree = "<group>";
+		};
+		868524702487EEE600A970ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B0B3D6B24805027007B0603 /* StopwatchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		868524712487EEF600A970ED /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				868524732487EFED00A970ED /* View */,
+				868524722487EF1E00A970ED /* Controller */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		868524722487EF1E00A970ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B52149C2481D7980092D5B5 /* TimerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		868524732487EFED00A970ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B027507D24875206009CBB56 /* View */ = {
@@ -246,21 +370,9 @@
 				B03F047124847AC000C1AA16 /* Sound */,
 				B02750802487524C009CBB56 /* Controller */,
 				B027507D24875206009CBB56 /* View */,
-				B083AEB8248750D4003EB3BC /* Model */,
+				8685246A2487ECB100A970ED /* Model */,
 			);
 			path = Alarm;
-			sourceTree = "<group>";
-		};
-		B083AEB8248750D4003EB3BC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B0275072248751C4009CBB56 /* Alarm.swift */,
-				B0275071248751C4009CBB56 /* ManagedAlarm.swift */,
-				B0275073248751C4009CBB56 /* Model.xcdatamodeld */,
-				B0275075248751C4009CBB56 /* Sound.swift */,
-				B0275076248751C4009CBB56 /* Week.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,32 +499,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */,
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
 				B027507B248751C4009CBB56 /* Week.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
+				868524622487EBCB00A970ED /* TimeZoneRequest.swift in Sources */,
 				B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */,
+				868524502487EBA700A970ED /* WorldClocksController.swift in Sources */,
 				7B0B3D6C24805027007B0603 /* StopwatchViewController.swift in Sources */,
+				868524672487EBEF00A970ED /* Array+Diff.swift in Sources */,
+				8685245F2487EBBA00A970ED /* WorldClockList.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
-				7B0A0ECE247F29A600313926 /* BuildFile in Sources */,
+				7B0A0ECE247F29A600313926 /* (null) in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
 				B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */,
+				868524662487EBEF00A970ED /* URL+Params.swift in Sources */,
 				B027507F2487521F009CBB56 /* AlarmTableViewCell.swift in Sources */,
 				B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */,
+				868524532487EBA700A970ED /* AddClockViewController.swift in Sources */,
 				B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */,
 				B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */,
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
+				8685245D2487EBBA00A970ED /* ManagedTimeZone.swift in Sources */,
 				B0275078248751C4009CBB56 /* Alarm.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
+				8685245C2487EBBA00A970ED /* TimeZone.swift in Sources */,
 				7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */,
 				7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
+				8685245E2487EBBA00A970ED /* Model.xcdatamodeld in Sources */,
+				8685245B2487EBBA00A970ED /* ManagedWorldClock.swift in Sources */,
 				B027507A248751C4009CBB56 /* Sound.swift in Sources */,
 				B0DBB9BC24819227000212EC /* AddAlarmTableViewController.swift in Sources */,
+				868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */,
+				868524682487EBEF00A970ED /* FetchedResultsTableViewController.swift in Sources */,
 				B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */,
-				B0275079248751C4009CBB56 /* Model.xcdatamodeld in Sources */,
 				B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */,
+				868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,12 +729,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B0275073248751C4009CBB56 /* Model.xcdatamodeld */ = {
+		868524582487EBBA00A970ED /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B0275074248751C4009CBB56 /* Model.xcdatamodel */,
+				868524592487EBBA00A970ED /* Model.xcdatamodel */,
 			);
-			currentVersion = B0275074248751C4009CBB56 /* Model.xcdatamodel */;
+			currentVersion = 868524592487EBBA00A970ED /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
