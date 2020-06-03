@@ -20,7 +20,13 @@ class MainTabBarViewController: UITabBarController {
 
         let secondViewController = StopwatchViewController()
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        let tabBarList = [firstViewController, secondViewController]
+
+        let AlarmTVC = AlarmTableViewController(style: .grouped)
+        AlarmTVC.container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        let thirdViewController = UINavigationController(rootViewController: AlarmTVC)
+        thirdViewController.tabBarItem = UITabBarItem(title: "alarm", image: UIImage(named: "alarm_white"), tag: 2)
+
+        let tabBarList = [firstViewController, secondViewController, thirdViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
 

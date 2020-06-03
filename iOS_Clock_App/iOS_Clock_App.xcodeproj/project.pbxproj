@@ -19,6 +19,29 @@
 		7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F56AA247DCA9E0028891C /* ViewController.swift */; };
 		7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56AF247DCAA20028891C /* Assets.xcassets */; };
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
+		B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275071248751C4009CBB56 /* ManagedAlarm.swift */; };
+		B0275078248751C4009CBB56 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275072248751C4009CBB56 /* Alarm.swift */; };
+		B0275079248751C4009CBB56 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0275073248751C4009CBB56 /* Model.xcdatamodeld */; };
+		B027507A248751C4009CBB56 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275075248751C4009CBB56 /* Sound.swift */; };
+		B027507B248751C4009CBB56 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275076248751C4009CBB56 /* Week.swift */; };
+		B027507F2487521F009CBB56 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B027507E2487521E009CBB56 /* AlarmTableViewCell.swift */; };
+		B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0335BFA2482EEC20026F6FA /* LabelViewController.swift */; };
+		B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */; };
+		B03F04702484790700C1AA16 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F046F2484790700C1AA16 /* bell.mp3 */; };
+		B03F047324847ADC00C1AA16 /* tickle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047224847ADC00C1AA16 /* tickle.mp3 */; };
+		B03F047E24847CC100C1AA16 /* house_fire_alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047424847CC000C1AA16 /* house_fire_alarm.mp3 */; };
+		B03F047F24847CC100C1AA16 /* rooster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047524847CC000C1AA16 /* rooster.mp3 */; };
+		B03F048024847CC100C1AA16 /* siren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047624847CC000C1AA16 /* siren.mp3 */; };
+		B03F048224847CC100C1AA16 /* analog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047824847CC000C1AA16 /* analog.mp3 */; };
+		B03F048524847CC100C1AA16 /* school_bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047B24847CC100C1AA16 /* school_bell.mp3 */; };
+		B03F048624847CC100C1AA16 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047C24847CC100C1AA16 /* bomb.mp3 */; };
+		B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */; };
+		B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */; };
+		B0DBB9BC24819227000212EC /* AddAlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */; };
+		B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9BD248197BA000212EC /* RightDetailTableViewCell.swift */; };
+		B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */; };
+		B0E4CC932484BF1300C1A3EA /* cop_car.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B0E4CC912484BF1300C1A3EA /* cop_car.mp3 */; };
+		B0E4CC942484BF1300C1A3EA /* buzz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B0E4CC922484BF1300C1A3EA /* buzz.mp3 */; };
 		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
 		EF0F0533C1CEE97CFF2DD107 /* Pods_iOS_Clock_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2906C4AA91114BABAB13D6 /* Pods_iOS_Clock_App.framework */; };
@@ -39,6 +62,29 @@
 		7B1F56AF247DCAA20028891C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B1F56B2247DCAA20028891C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0275071248751C4009CBB56 /* ManagedAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAlarm.swift; sourceTree = "<group>"; };
+		B0275072248751C4009CBB56 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		B0275074248751C4009CBB56 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B0275075248751C4009CBB56 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		B0275076248751C4009CBB56 /* Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		B027507E2487521E009CBB56 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		B0335BFA2482EEC20026F6FA /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewController.swift; sourceTree = "<group>"; };
+		B03F046F2484790700C1AA16 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		B03F047224847ADC00C1AA16 /* tickle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tickle.mp3; sourceTree = "<group>"; };
+		B03F047424847CC000C1AA16 /* house_fire_alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = house_fire_alarm.mp3; sourceTree = "<group>"; };
+		B03F047524847CC000C1AA16 /* rooster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rooster.mp3; sourceTree = "<group>"; };
+		B03F047624847CC000C1AA16 /* siren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siren.mp3; sourceTree = "<group>"; };
+		B03F047824847CC000C1AA16 /* analog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = analog.mp3; sourceTree = "<group>"; };
+		B03F047B24847CC100C1AA16 /* school_bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = school_bell.mp3; sourceTree = "<group>"; };
+		B03F047C24847CC100C1AA16 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
+		B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
+		B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
+		B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmTableViewController.swift; sourceTree = "<group>"; };
+		B0DBB9BD248197BA000212EC /* RightDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
+		B0E4CC912484BF1300C1A3EA /* cop_car.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cop_car.mp3; sourceTree = "<group>"; };
+		B0E4CC922484BF1300C1A3EA /* buzz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buzz.mp3; sourceTree = "<group>"; };
 		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +190,7 @@
 		7B1F56A5247DCA9E0028891C /* iOS_Clock_App */ = {
 			isa = PBXGroup;
 			children = (
+				B083AEB7248750C2003EB3BC /* Alarm */,
 				7B0A0EC2247F12F700313926 /* Utils */,
 				7B0A0EC0247F12DC00313926 /* Model */,
 				7B0A0EC1247F12E700313926 /* View */,
@@ -152,6 +199,68 @@
 				7B1F56B4247DCAA20028891C /* Info.plist */,
 			);
 			path = iOS_Clock_App;
+			sourceTree = "<group>";
+		};
+		B027507D24875206009CBB56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B027507E2487521E009CBB56 /* AlarmTableViewCell.swift */,
+				B0DBB9BF24819E50000212EC /* DatePickerTableViewCell.swift */,
+				B0DBB9BD248197BA000212EC /* RightDetailTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B02750802487524C009CBB56 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */,
+				B0DBB9BB24819227000212EC /* AddAlarmTableViewController.swift */,
+				B03F046B2483016D00C1AA16 /* SoundTableViewController.swift */,
+				B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */,
+				B0335BFA2482EEC20026F6FA /* LabelViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B03F047124847AC000C1AA16 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				B03F046F2484790700C1AA16 /* bell.mp3 */,
+				B03F047224847ADC00C1AA16 /* tickle.mp3 */,
+				B03F047824847CC000C1AA16 /* analog.mp3 */,
+				B03F047C24847CC100C1AA16 /* bomb.mp3 */,
+				B03F047424847CC000C1AA16 /* house_fire_alarm.mp3 */,
+				B03F047B24847CC100C1AA16 /* school_bell.mp3 */,
+				B03F047524847CC000C1AA16 /* rooster.mp3 */,
+				B03F047624847CC000C1AA16 /* siren.mp3 */,
+				B0E4CC922484BF1300C1A3EA /* buzz.mp3 */,
+				B0E4CC912484BF1300C1A3EA /* cop_car.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		B083AEB7248750C2003EB3BC /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				B03F047124847AC000C1AA16 /* Sound */,
+				B02750802487524C009CBB56 /* Controller */,
+				B027507D24875206009CBB56 /* View */,
+				B083AEB8248750D4003EB3BC /* Model */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		B083AEB8248750D4003EB3BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0275072248751C4009CBB56 /* Alarm.swift */,
+				B0275071248751C4009CBB56 /* ManagedAlarm.swift */,
+				B0275073248751C4009CBB56 /* Model.xcdatamodeld */,
+				B0275075248751C4009CBB56 /* Sound.swift */,
+				B0275076248751C4009CBB56 /* Week.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,8 +323,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03F048624847CC100C1AA16 /* bomb.mp3 in Resources */,
+				B03F048524847CC100C1AA16 /* school_bell.mp3 in Resources */,
+				B03F048024847CC100C1AA16 /* siren.mp3 in Resources */,
+				B03F047324847ADC00C1AA16 /* tickle.mp3 in Resources */,
+				B03F047F24847CC100C1AA16 /* rooster.mp3 in Resources */,
+				B0E4CC942484BF1300C1A3EA /* buzz.mp3 in Resources */,
+				B03F048224847CC100C1AA16 /* analog.mp3 in Resources */,
 				7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */,
+				B0E4CC932484BF1300C1A3EA /* cop_car.mp3 in Resources */,
+				B03F047E24847CC100C1AA16 /* house_fire_alarm.mp3 in Resources */,
 				7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */,
+				B03F04702484790700C1AA16 /* bell.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,16 +389,30 @@
 			files = (
 				7B1F56AB247DCA9E0028891C /* ViewController.swift in Sources */,
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
+				B027507B248751C4009CBB56 /* Week.swift in Sources */,
+				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
+				B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */,
 				7B0B3D6C24805027007B0603 /* StopwatchViewController.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
 				7B0A0ECE247F29A600313926 /* BuildFile in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
+				B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */,
+				B027507F2487521F009CBB56 /* AlarmTableViewCell.swift in Sources */,
+				B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */,
+				B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */,
+				B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */,
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
+				B0275078248751C4009CBB56 /* Alarm.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
 				7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */,
 				7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
+				B027507A248751C4009CBB56 /* Sound.swift in Sources */,
+				B0DBB9BC24819227000212EC /* AddAlarmTableViewController.swift in Sources */,
+				B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */,
+				B0275079248751C4009CBB56 /* Model.xcdatamodeld in Sources */,
+				B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +604,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B0275073248751C4009CBB56 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B0275074248751C4009CBB56 /* Model.xcdatamodel */,
+			);
+			currentVersion = B0275074248751C4009CBB56 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7B1F569B247DCA9E0028891C /* Project object */;
 }
