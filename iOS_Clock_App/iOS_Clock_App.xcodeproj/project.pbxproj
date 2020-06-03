@@ -30,6 +30,8 @@
 		B03F048624847CC100C1AA16 /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B03F047C24847CC100C1AA16 /* bomb.mp3 */; };
 		B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */; };
 		B0814FDE2481BC640087DC6A /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0814FDD2481BC640087DC6A /* Week.swift */; };
+		B083AEB42486BFC3003EB3BC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B083AEB22486BFC3003EB3BC /* Model.xcdatamodeld */; };
+		B083AEB62486C3B0003EB3BC /* ManagedAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B083AEB52486C3B0003EB3BC /* ManagedAlarm.swift */; };
 		B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */; };
 		B0DBB9B624806B18000212EC /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */; };
 		B0DBB9BA24806CB3000212EC /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DBB9B924806CB3000212EC /* Alarm.swift */; };
@@ -66,6 +68,8 @@
 		B03F047C24847CC100C1AA16 /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
 		B0814FDB2481BB770087DC6A /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
 		B0814FDD2481BC640087DC6A /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Week.swift; path = iOS_Clock_App/Controller/Week.swift; sourceTree = SOURCE_ROOT; };
+		B083AEB32486BFC3003EB3BC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B083AEB52486C3B0003EB3BC /* ManagedAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagedAlarm.swift; path = iOS_Clock_App/ManagedAlarm.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B324806AD2000212EC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		B0DBB9B524806B18000212EC /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = iOS_Clock_App/View/AlarmTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		B0DBB9B924806CB3000212EC /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = iOS_Clock_App/Controller/Alarm.swift; sourceTree = SOURCE_ROOT; };
@@ -116,8 +120,10 @@
 			isa = PBXGroup;
 			children = (
 				B0DBB9B924806CB3000212EC /* Alarm.swift */,
+				B083AEB52486C3B0003EB3BC /* ManagedAlarm.swift */,
 				B0814FDD2481BC640087DC6A /* Week.swift */,
 				B03F046D2483212900C1AA16 /* Sound.swift */,
+				B083AEB22486BFC3003EB3BC /* Model.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,11 +283,13 @@
 				B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */,
 				7B1F56A7247DCA9E0028891C /* AppDelegate.swift in Sources */,
 				B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */,
+				B083AEB42486BFC3003EB3BC /* Model.xcdatamodeld in Sources */,
 				B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */,
 				B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */,
 				B0DBB9B624806B18000212EC /* AlarmTableViewCell.swift in Sources */,
 				B0DBB9BE248197BA000212EC /* RightDetailTableViewCell.swift in Sources */,
 				7B0A0ECB247F180300313926 /* HorizontalStackView.swift in Sources */,
+				B083AEB62486C3B0003EB3BC /* ManagedAlarm.swift in Sources */,
 				7B0A0ECC247F180300313926 /* VerticalStackView.swift in Sources */,
 				B03F046E2483212900C1AA16 /* Sound.swift in Sources */,
 				7B1F56A9247DCA9E0028891C /* SceneDelegate.swift in Sources */,
@@ -478,6 +486,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B083AEB22486BFC3003EB3BC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B083AEB32486BFC3003EB3BC /* Model.xcdatamodel */,
+			);
+			currentVersion = B083AEB32486BFC3003EB3BC /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = iOS_Clock_App/Model.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7B1F569B247DCA9E0028891C /* Project object */;
 }

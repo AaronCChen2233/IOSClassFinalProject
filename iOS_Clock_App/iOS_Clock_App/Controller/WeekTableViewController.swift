@@ -11,8 +11,8 @@ import UIKit
 class WeekTableViewController: UITableViewController {
     
     private let week: [Week] = Week.getAllWeek()
-    var curSelectWeeks: Set<Week.weekType>!
-    var didSelect: ((Set<Week.weekType>) -> ())?
+    var curSelectWeeks: Set<Week.weekType.RawValue>!
+    var didSelect: ((Set<Week.weekType.RawValue>) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class WeekTableViewController: UITableViewController {
             let w: Week = week[indexPath.row]
             tc.textLabel?.text = w.type.description
             if let setWeek = curSelectWeeks {
-                tc.accessoryType = setWeek.contains(w.type) ? .checkmark : .none
+                tc.accessoryType = setWeek.contains(w.type.rawValue) ? .checkmark : .none
             } else {
                 tc.accessoryType = .none
             }
@@ -47,10 +47,10 @@ class WeekTableViewController: UITableViewController {
         let cur = tableView.cellForRow(at: indexPath)?.accessoryType
         if cur == UITableViewCell.AccessoryType.none {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            curSelectWeeks.insert(week[indexPath.row].type)
+            curSelectWeeks.insert(week[indexPath.row].type.rawValue)
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            curSelectWeeks.remove(week[indexPath.row].type)
+            curSelectWeeks.remove(week[indexPath.row].type.rawValue)
         }
         didSelect?(curSelectWeeks!)
     }

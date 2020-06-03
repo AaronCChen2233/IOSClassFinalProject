@@ -9,8 +9,9 @@
 import Foundation
 
 struct Alarm {
+    var id: Int
     var date: Date
-    var week: Set<Week.weekType>
+    var week: Set<Week.weekType.RawValue>
     var label: String = "Label"
     var sound: Sound = Sound.getAllSounds().first!
     var isOn: Bool = true
@@ -18,10 +19,10 @@ struct Alarm {
     
     static func initialize() -> [Alarm] {
         return [
-            Alarm(date: Date(), week: [.thu, .mon, .wed], label: "Mon and Tue"),
-            Alarm(date: Date(), week: [.sat, .sun], label: "Weenends"),
-            Alarm(date: Date(), week: [.fri], label: "TGIF", isOn: false),
-            Alarm(date: Date(), week: [], label: "TGIF", isOn: false)
+            Alarm(id: 0, date: Date(), week: [0,1], label: "Mon and Tue"),
+            Alarm(id: 1, date: Date(), week: [5,6], label: "Weenends"),
+            Alarm(id: 2, date: Date(), week: [4], label: "TGIF", isOn: false),
+            Alarm(id: 3, date: Date(), week: [], label: "Nothing", isOn: false)
         ]
     }
     
@@ -36,9 +37,12 @@ struct Alarm {
         guard self.week.count != 1 else { return "Every \(self.week.first!.description)" }
         guard self.week.count < 7 else { return "Everyday"}
 
-        if self.week.count == 2 && self.week.contains(.sat) && self.week.contains(.sun) { return "Every Weekend" }
-        if self.week.count == 5 && self.week.filter({$0 != .sat && $0 != .sun }).count == 5 { return "Every Weekday"}
-        return self.week.sorted(by: {$0 < $1}).reduce("", { $0 + $1.description[..<$1.description.index($1.description.startIndex, offsetBy: 3)] + " "})
+        if self.week.count == 2 && self.week.contains(5) && self.week.contains(6) { return "Every Weekend" }
+        if self.week.count == 5 && self.week.filter({$0 != 5 && $0 != 6 }).count == 5 { return "Every Weekday"}
+        return self.week.sorted(by: {$0 < $1}).reduce("", { x, y in
+            let week: String = Week.weekType(rawValue: y)!.description
+            return x! + week[..<week.index(week.startIndex, offsetBy: 3)] + " "
+        })
     }
 }
 

@@ -32,8 +32,8 @@ class SoundTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = sounds[indexPath.row].name
-        cell.accessoryType = sounds[indexPath.row].id == curSound.id ? .checkmark : .none
+        cell.textLabel?.text = sounds[indexPath.row].name.rawValue
+        cell.accessoryType = sounds[indexPath.row].name == curSound.name ? .checkmark : .none
         return cell
     }
     
@@ -44,9 +44,7 @@ class SoundTableViewController: UITableViewController {
         tableView.cellForRow(at: indexPath)?.accessoryType = cur == UITableViewCell.AccessoryType.none ? .checkmark : .none
         curSound = sounds[indexPath.row]
         
-        print(curSound.name)
         let path: String = Bundle.main.path(forResource: "\(curSound.name).mp3", ofType:nil)!
-        print(path)
         let url = URL(fileURLWithPath: path)
         do {
             bombSoundEffect = try AVAudioPlayer(contentsOf: url)

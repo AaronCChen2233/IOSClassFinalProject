@@ -10,21 +10,33 @@ import Foundation
 import AudioToolbox
 
 struct Sound {
-    var id: Int
-    var name: String
+    var name: SoundName
+    
+    enum SoundName: String {
+        case bell = "bell"
+        case tickle = "tickle"
+        case analog = "analog"
+        case bomb = "bomb"
+        case house_fire_alarm = "house_fire_alarm"
+        case buzz = "buzz"
+        case school_bell = "school_bell"
+        case cop_car = "cop_car"
+        case rooster = "rooster"
+        case siren = "siren"
+    }
     
     static func getAllSounds() -> [Sound] {
         return [
-            Sound(id: 1, name: "bell"),
-            Sound(id: 2, name: "tickle"),
-            Sound(id: 3, name: "analog"),
-            Sound(id: 4, name: "bomb"),
-            Sound(id: 5, name: "house_fire_alarm"),
-            Sound(id: 6, name: "buzz"),
-            Sound(id: 7, name: "school_bell"),
-            Sound(id: 8, name: "cop_car"),
-            Sound(id: 9, name: "rooster"),
-            Sound(id: 10, name: "siren"),
+            Sound(name: .bell),
+            Sound(name: .tickle),
+            Sound(name: .analog),
+            Sound(name: .bomb),
+            Sound(name: .house_fire_alarm),
+            Sound(name: .buzz),
+            Sound(name: .school_bell),
+            Sound(name: .cop_car),
+            Sound(name: .rooster),
+            Sound(name: .siren),
         ]
     }
 }

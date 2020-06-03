@@ -9,13 +9,15 @@
 import UIKit
 import UserNotifications
 import AudioToolbox
+import CoreData
 
 class AlarmTableViewController: UITableViewController {
     
     let cellIdentifier = "AlarmCell"
     
     var alarms: [Alarm] = []
-
+    var container: NSPersistentContainer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alarm"
@@ -26,13 +28,22 @@ class AlarmTableViewController: UITableViewController {
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
         // delete all notifications
-        let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
-        center.getPendingNotificationRequests(completionHandler: { requests in
-            for request in requests {
-                print(request)
-            }
-        })
+//        let center = UNUserNotificationCenter.current()
+//        center.removeAllPendingNotificationRequests()
+//        center.getPendingNotificationRequests(completionHandler: { requests in
+//            for request in requests {
+//                print(request)
+//            }
+//        })
+        
+        // delete all core data
+//        clearDatabase()
+        
+        // insert data from core data into the alarms
+        fetchAllRecord()
+        
+        // count alarms from Core Data
+        printDatabaseStatistics()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,27 +62,26 @@ class AlarmTableViewController: UITableViewController {
             self.deleteNotification(Ids: ids!)
         })
         cell.onSwitch = ({ (alarm, int) -> ([String]) in
-            return self.setNotifications(alarm: alarm, pos: int)
+            return self.setNotifications(alarm: alarm)
         })
         return cell
     }
     
-    func addNewAlarm(new: Alarm, pos: Int?) {
-        if let i = pos {
-            deleteNotification(Ids: alarms[i].notificationIds)
-            alarms[i] = new
-            alarms[i].notificationIds = setNotifications(alarm: new, pos: i)
-            tableView.reloadRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
-            
+    func addNewAlarm(new: Alarm) {
+        if new.id < alarms.count {
+            deleteNotification(Ids: alarms[new.id].notificationIds)
+            alarms[new.id] = new
+            alarms[new.id].notificationIds = setNotifications(alarm: new)
+            tableView.reloadRows(at: [IndexPath(row: new.id, section: 0)], with: .automatic)
         } else {
             alarms.append(new)
-            let lastId: Int = alarms.count - 1
-            alarms[lastId].notificationIds = setNotifications(alarm: new, pos: lastId)
-            tableView.insertRows(at: [IndexPath(row: lastId, section: 0)], with: .automatic)
+            alarms[new.id].notificationIds = setNotifications(alarm: new)
+            tableView.insertRows(at: [IndexPath(row: new.id, section: 0)], with: .automatic)
         }
+        addDatabase(with: alarms[new.id], for: new.id)
     }
         
-    func setNotifications(alarm: Alarm, pos: Int) -> [String] {
+    func setNotifications(alarm: Alarm) -> [String] {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
 
@@ -84,7 +94,7 @@ class AlarmTableViewController: UITableViewController {
             var triggerWeekly = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: alarm.date)
             triggerWeekly.second = 0
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: false)
-            let identifier = "alarm-\(pos)-once"
+            let identifier = "alarm-\(alarm.id)-once"
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             center.add(request) { (error) in
                 if (error) != nil {
@@ -97,10 +107,10 @@ class AlarmTableViewController: UITableViewController {
         for w in alarm.week {
             var triggerWeekly = Calendar.current.dateComponents([.weekday, .hour, .minute, .second], from: alarm.date)
             triggerWeekly.second = 0
-            let weekId = (w.rawValue + 1) % 7 + 1
+            let weekId = (w + 1) % 7 + 1
             triggerWeekly.weekday = weekId
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
-            let identifier: String = "alarm-\(pos)-\(weekId)"
+            let identifier: String = "alarm-\(alarm.id)-\(weekId)"
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             center.add(request) { (error) in
                 if (error) != nil {
@@ -120,6 +130,7 @@ class AlarmTableViewController: UITableViewController {
     @objc func showNewAlarmTVC(_ sender: UIBarButtonItem) {
         let addAlarmTVC = AddAlarmTableViewController(style: .grouped)
         let embedNav = UINavigationController(rootViewController: addAlarmTVC)
+        addAlarmTVC.newAlarm = Alarm(id: alarms.count, date: Date(), week: [])
         addAlarmTVC.addAlarm = addNewAlarm
         present(embedNav, animated: true, completion: nil)
     }
@@ -131,7 +142,7 @@ class AlarmTableViewController: UITableViewController {
         let addAlarmTVC = AddAlarmTableViewController(style: .grouped)
         let embedNav = UINavigationController(rootViewController: addAlarmTVC)
         addAlarmTVC.newAlarm = alarms[indexPath.row]
-        addAlarmTVC.insertPos = indexPath.row
+        addAlarmTVC.addAlarm = addNewAlarm
         present(embedNav, animated: true, completion: nil)
     }
     
@@ -140,6 +151,45 @@ class AlarmTableViewController: UITableViewController {
       if editingStyle == .delete {
         alarms.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
+    }
+    
+    
+    // operation for Core Data
+    private func addDatabase(with alarm: Alarm, for searchId: Int) {
+      container.performBackgroundTask { [weak self] context in
+        _ = try? ManagedAlarm.CreateOrUpdateAlarm(matching: alarm, with: searchId, in: context)
+        try? context.save()
+        self?.printDatabaseStatistics()
+      }
+    }
+    
+    private func clearDatabase() {
+      container.performBackgroundTask { [weak self] context in
+        ManagedAlarm.ClearAllData(in: context)
+        try? context.save()
+        self?.printDatabaseStatistics()
+      }
+    }
+    
+    private func fetchAllRecord() {
+      container.performBackgroundTask { [weak self] context in
+        self?.alarms = ManagedAlarm.insertAllRecord(in: context)
+      }
+    }
+    
+    private func printDatabaseStatistics() {
+      let context = container.viewContext
+      context.perform {
+        if Thread.isMainThread {
+          print("on main thread")
+        } else {
+          print("off main thread")
+        }
+
+        if let alarmCount = (try? context.count(for: ManagedAlarm.fetchRequest())) {
+          print("\(alarmCount) alarms")
+        }
       }
     }
 }

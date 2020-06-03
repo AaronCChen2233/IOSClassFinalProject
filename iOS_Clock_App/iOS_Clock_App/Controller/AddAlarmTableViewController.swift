@@ -10,8 +10,8 @@ import UIKit
 
 class AddAlarmTableViewController: UITableViewController {
 
-    var insertPos: Int?
-    var newAlarm: Alarm = Alarm(date: Date(), week: [])
+    var newAlarm: Alarm!
+    
     private let timeCell = DatePickerTableViewCell()
     private var repeatWeeks: Set<Week.weekType> = []
     private var repeatCell: RightDetailTableViewCell = {
@@ -33,7 +33,7 @@ class AddAlarmTableViewController: UITableViewController {
         return tc
     }()
     
-    var addAlarm: ((Alarm, Int?) -> ())?
+    var addAlarm: ((Alarm) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +49,11 @@ class AddAlarmTableViewController: UITableViewController {
     
     @objc func saveTapped(_ sender: UIBarButtonItem) {
         newAlarm.date = timeCell.datePicker.date
-        addAlarm?(newAlarm, insertPos)
+        addAlarm?(newAlarm)
         dismiss(animated: true, completion: nil)
     }
     
-    func updateRepeatWeeks(new: Set<Week.weekType>) {
+    func updateRepeatWeeks(new: Set<Week.weekType.RawValue>) {
         newAlarm.week = new
         tableView.reloadData()
     }
@@ -94,7 +94,7 @@ class AddAlarmTableViewController: UITableViewController {
                 return cell
             case (1, 2):
                 let cell = soundCell
-                cell.detailTextLabel?.text = newAlarm.sound.name
+                cell.detailTextLabel?.text = newAlarm.sound.name.rawValue
                 return cell
             default:
                 return UITableViewCell()
