@@ -16,12 +16,7 @@ class ManagedWorldClock: NSManagedObject {
             let matches = try context.fetch(request)
             var zones = [Zone]()
             for matche in matches {
-                var zone = Zone()
-                zone.countryCode = matche.countryCode ?? ""
-                zone.countryName = matche.countryName ?? ""
-                zone.gmtOffset = Int(matche.gmtOffset)
-                zone.timestamp = Int(matche.timestamp)
-                zone.zoneName = matche.zoneName ?? ""
+                let zone = matche.converToZone()
                 zones.append(zone)
             }
             completion(zones)
@@ -38,11 +33,12 @@ class ManagedWorldClock: NSManagedObject {
             if matches.count > 0 {
                 assert(matches.count == 1, "ManagedWorldClock.findOrCreateTimeZone -- database inconsistency")
                 let matchedWorldClock = matches[0]
-                matchedWorldClock.countryCode = worldClockInfo.countryCode
-                matchedWorldClock.countryName = worldClockInfo.countryName
-                matchedWorldClock.gmtOffset = Int64(worldClockInfo.gmtOffset)
-                matchedWorldClock.timestamp = Int64(worldClockInfo.timestamp)
-                matchedWorldClock.zoneName = worldClockInfo.zoneName
+                matchedWorldClock.resetValue(
+                    countryCode: worldClockInfo.countryCode,
+                    countryName: worldClockInfo.countryName,
+                    gmtOffset: worldClockInfo.gmtOffset,
+                    timestamp: worldClockInfo.timestamp,
+                    zoneName: worldClockInfo.zoneName)
                 return matchedWorldClock
             }
         } catch {
@@ -51,11 +47,35 @@ class ManagedWorldClock: NSManagedObject {
       
         // no match
         let worldClock = ManagedWorldClock(context: context)
-        worldClock.countryCode = worldClockInfo.countryCode
-        worldClock.countryName = worldClockInfo.countryName
-        worldClock.gmtOffset = Int64(worldClockInfo.gmtOffset)
-        worldClock.timestamp = Int64(worldClockInfo.timestamp)
-        worldClock.zoneName = worldClockInfo.zoneName
+        worldClock.resetValue(
+            countryCode: worldClockInfo.countryCode,
+            countryName: worldClockInfo.countryName,
+            gmtOffset: worldClockInfo.gmtOffset,
+            timestamp: worldClockInfo.timestamp,
+            zoneName: worldClockInfo.zoneName)
         return worldClock
+    }
+}
+
+extension ManagedWorldClock {
+    func converToZone() -> Zone {
+        var zone = Zone()
+        zone.countryCode = self.countryCode ?? ""
+        zone.countryName = self.countryName ?? ""
+        zone.gmtOffset = Int(self.gmtOffset)
+        zone.timestamp = Int(self.timestamp)
+        zone.zoneName = self.zoneName ?? ""
+        return zone
+    }
+    
+    func resetValue(countryCode: String, countryName: String, gmtOffset: Int, timestamp: Int, zoneName: String) {
+        let zoneNameSplit = zoneName.split(separator: "/")
+        let cityName = zoneNameSplit[1]
+        self.city = String(cityName)
+        self.countryCode = countryCode
+        self.countryName = countryName
+        self.gmtOffset = Int64(gmtOffset)
+        self.timestamp = Int64(timestamp)
+        self.zoneName = zoneName
     }
 }

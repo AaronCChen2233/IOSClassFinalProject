@@ -152,19 +152,19 @@ extension WorldClockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WorldClockTableViewCell
-        let city = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
+        let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
         cell.selectionStyle = .none
         cell.backgroundColor = .black
                 
         let calendar = Calendar.current
         let currHour = calendar.component(.hour, from: date)
         let currMinutes = calendar.component(.minute, from: date)
-        let calHour = currHour + ((city.gmtOffset/3600)-8)
+        let calHour = currHour + ((zone.gmtOffset/3600)-8)
         let hour = calHour > 0 ? calHour % 24 : (calHour + 24) % 24
         let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
         let minutesString = currMinutes < 10 ? "0\(currMinutes)" : "\(currMinutes)"
-        let differ = calHour < 0 ? "Yestoday, \((city.gmtOffset/3600)-8)" : calHour >= 24 ? "Tomorow, \((city.gmtOffset/3600)-8)" : "Today, \((city.gmtOffset/3600)-8)"
-        let zoneName = city.zoneName.split(separator: "/")
+        let differ = calHour < 0 ? "Yestoday, \((zone.gmtOffset/3600)-8)" : calHour >= 24 ? "Tomorow, \((zone.gmtOffset/3600)-8)" : "Today, \((zone.gmtOffset/3600)-8)"
+        let zoneName = zone.zoneName.split(separator: "/")
         let cityName = zoneName[1]
         
         cell.timeLable.text =  "\(hourString):\(minutesString)"

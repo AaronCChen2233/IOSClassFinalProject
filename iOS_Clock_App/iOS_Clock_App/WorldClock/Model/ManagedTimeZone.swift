@@ -16,12 +16,7 @@ class ManagedTimeZone: NSManagedObject {
             let matches = try context.fetch(request)
             var zones = [Zone]()
             for matche in matches {
-                var zone = Zone()
-                zone.countryCode = matche.countryCode ?? ""
-                zone.countryName = matche.countryName ?? ""
-                zone.gmtOffset = Int(matche.gmtOffset)
-                zone.timestamp = Int(matche.timestamp)
-                zone.zoneName = matche.zoneName ?? ""
+                let zone = matche.converToZone()
                 zones.append(zone)
             }
             completion(zones)
@@ -38,14 +33,12 @@ class ManagedTimeZone: NSManagedObject {
             if matches.count > 0 {
                 assert(matches.count == 1, "ManagedTimeZone.findOrCreateTimeZone -- database inconsistency")
                 let matchedTimeZone = matches[0]
-                let zoneName = timeZoneInfo.zoneName.split(separator: "/")
-                let cityName = zoneName[1]
-                matchedTimeZone.city = String(cityName)
-                matchedTimeZone.countryCode = timeZoneInfo.countryCode
-                matchedTimeZone.countryName = timeZoneInfo.countryName
-                matchedTimeZone.gmtOffset = Int64(timeZoneInfo.gmtOffset)
-                matchedTimeZone.timestamp = Int64(timeZoneInfo.timestamp)
-                matchedTimeZone.zoneName = timeZoneInfo.zoneName
+                matchedTimeZone.resetValue(
+                    countryCode: timeZoneInfo.countryCode,
+                    countryName: timeZoneInfo.countryName,
+                    gmtOffset: timeZoneInfo.gmtOffset,
+                    timestamp: timeZoneInfo.timestamp,
+                    zoneName: timeZoneInfo.zoneName)
                 return matchedTimeZone
             }
         } catch {
@@ -54,14 +47,12 @@ class ManagedTimeZone: NSManagedObject {
       
         // no match
         let timeZone = ManagedTimeZone(context: context)
-        let zoneName = timeZoneInfo.zoneName.split(separator: "/")
-        let cityName = zoneName[1]
-        timeZone.city = String(cityName)
-        timeZone.countryCode = timeZoneInfo.countryCode
-        timeZone.countryName = timeZoneInfo.countryName
-        timeZone.gmtOffset = Int64(timeZoneInfo.gmtOffset)
-        timeZone.timestamp = Int64(timeZoneInfo.timestamp)
-        timeZone.zoneName = timeZoneInfo.zoneName
+        timeZone.resetValue(
+            countryCode: timeZoneInfo.countryCode,
+            countryName: timeZoneInfo.countryName,
+            gmtOffset: timeZoneInfo.gmtOffset,
+            timestamp: timeZoneInfo.timestamp,
+            zoneName: timeZoneInfo.zoneName)
         return timeZone
     }
 }
@@ -75,5 +66,16 @@ extension ManagedTimeZone {
         zone.timestamp = Int(self.timestamp)
         zone.zoneName = self.zoneName ?? ""
         return zone
+    }
+    
+    func resetValue(countryCode: String, countryName: String, gmtOffset: Int, timestamp: Int, zoneName: String) {
+        let zoneNameSplit = zoneName.split(separator: "/")
+        let cityName = zoneNameSplit[1]
+        self.city = String(cityName)
+        self.countryCode = countryCode
+        self.countryName = countryName
+        self.gmtOffset = Int64(gmtOffset)
+        self.timestamp = Int64(timestamp)
+        self.zoneName = zoneName
     }
 }
