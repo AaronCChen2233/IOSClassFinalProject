@@ -30,9 +30,11 @@ class MainTabBarViewController: UITabBarController {
         stopwatchViewController.tabBarItem = UITabBarItem(title: "Stopwatch", image: UIImage(systemName: "stopwatch"), tag: 2)
 
         let timerViewController = TimerViewController()
-        timerViewController.tabBarItem = UITabBarItem(title: "Timer", image: UIImage(systemName: "timer"), tag: 0)
+        timerViewController.tabBarItem = UITabBarItem(title: "Timer", image: UIImage(systemName: "timer"), tag: 3)
 
-        let tabBarList = [worldClockViewController, alarmViewController, stopwatchViewController, timerViewController]
+        /**Just for test now*/
+//        let tabBarList = [worldClockViewController, alarmViewController, stopwatchViewController, timerViewController]
+        let tabBarList = [timerViewController ,worldClockViewController, alarmViewController, stopwatchViewController]
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList
 
