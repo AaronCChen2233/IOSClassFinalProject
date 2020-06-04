@@ -31,10 +31,10 @@ class WorldClockViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = .black
+        //navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     override func viewDidLoad() {
@@ -65,11 +65,11 @@ class WorldClockViewController: UIViewController {
     
     private func setupWorldClockTableView() {
         worldClockTableView = UITableView()
-        worldClockTableView.backgroundColor = .black
+        //worldClockTableView.backgroundColor = .black
         worldClockTableView.dataSource = self
         worldClockTableView.delegate = self
         worldClockTableView.register(WorldClockTableViewCell.self, forCellReuseIdentifier: cellId)
-        worldClockTableView.separatorColor = .gray
+        //worldClockTableView.separatorColor = .gray
         view.addSubview(worldClockTableView)
         worldClockTableView.matchParent()
     }
@@ -154,7 +154,7 @@ extension WorldClockViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WorldClockTableViewCell
         let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
         cell.selectionStyle = .none
-        cell.backgroundColor = .black
+        //cell.backgroundColor = .black
                 
         let calendar = Calendar.current
         let currHour = calendar.component(.hour, from: date)
