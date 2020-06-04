@@ -77,5 +77,6 @@ extension ManagedTimeZone {
         self.gmtOffset = Int64(gmtOffset)
         self.timestamp = Int64(timestamp)
         self.zoneName = zoneName
+        self.firstLetter = String(cityName.first!)
     }
 }
