@@ -40,8 +40,8 @@ class AlarmTableViewCell: UITableViewCell {
             self.detailTextLabel?.text = "\(alarm.label)"
         }
         switchAlarm.setOn(alarm.isOn, animated: true)
-        textLabel?.textColor = alarm.isOn ? .black : .lightGray
-        detailTextLabel?.textColor = alarm.isOn ? .black : .lightGray
+        textLabel?.textColor = alarm.isOn ? .none : .lightGray
+        detailTextLabel?.textColor = alarm.isOn ? .none : .lightGray
 
     }
 
