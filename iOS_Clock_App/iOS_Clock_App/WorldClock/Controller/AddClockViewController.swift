@@ -60,6 +60,8 @@ class AddClockViewController: FetchedResultsTableViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         //searchController.searchBar.searchTextField.textColor = .white
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "highlightOrange")]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as [NSAttributedString.Key : Any] , for: .normal)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         definesPresentationContext = true
@@ -157,6 +159,18 @@ extension AddClockViewController {
           return 0
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController.sections, sections.count > 0 {
+          return sections[section].name
+        } else {
+          return nil
+        }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return fetchedResultsController.sectionIndexTitles
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
