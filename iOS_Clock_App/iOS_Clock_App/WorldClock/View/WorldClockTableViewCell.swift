@@ -14,7 +14,7 @@ class WorldClockTableViewCell: UITableViewCell {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 18)
-        lb.textColor = .gray
+        //lb.textColor = .gray
         return lb
     }()
     
@@ -22,7 +22,7 @@ class WorldClockTableViewCell: UITableViewCell {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.boldSystemFont(ofSize: 30)
-        lb.textColor = .white
+        //lb.textColor = .white
         return lb
     }()
     
@@ -30,7 +30,7 @@ class WorldClockTableViewCell: UITableViewCell {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 55)
-        lb.textColor = .white
+        //lb.textColor = .white
         return lb
     }()
     
@@ -41,7 +41,7 @@ class WorldClockTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        contentView.backgroundColor = .black
+        //contentView.backgroundColor = .black
         let vStackView = VerticalStackView(arrangedSubviews: [timeDifferenceLable, cityLabel], spacing: 5, distribution: .fillEqually)
         let hStackVie = HorizontalStackView(arrangedSubviews: [vStackView, timeLable], spacing: 10, distribution: .equalCentering)
         contentView.addSubview(hStackVie)
