@@ -19,6 +19,7 @@
         <attribute name="zoneName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="ManagedWorldClock" representedClassName=".ManagedWorldClock" syncable="YES" codeGenerationType="category">
+        <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="countryName" optional="YES" attributeType="String"/>
         <attribute name="gmtOffset" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -28,6 +29,6 @@
     <elements>
         <element name="ManagedAlarm" positionX="-63" positionY="36" width="128" height="148"/>
         <element name="ManagedTimeZone" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="ManagedWorldClock" positionX="-63" positionY="18" width="128" height="118"/>
+        <element name="ManagedWorldClock" positionX="-63" positionY="18" width="128" height="133"/>
     </elements>
 </model>

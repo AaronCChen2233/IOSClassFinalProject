@@ -29,7 +29,7 @@ class LabelViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(textField)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         title = "Label"
         textField.text = inputText
         textField.constraintWidth(equalToConstant: view.frame.width - padding * 2)

@@ -29,9 +29,9 @@ class AddClockViewController: FetchedResultsTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = .black
+        //navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class AddClockViewController: FetchedResultsTableViewController {
     }
     
     private func setupNavigation() {
-        view.backgroundColor = .black
+        //view.backgroundColor = .black
         navigationItem.title = "Choose a City"
         cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         cancelButton.tintColor = UIColor(named: "highlightOrange")
@@ -59,15 +59,17 @@ class AddClockViewController: FetchedResultsTableViewController {
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.searchTextField.textColor = .white
+        //searchController.searchBar.searchTextField.textColor = .white
+        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "highlightOrange")]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes as [NSAttributedString.Key : Any] , for: .normal)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         definesPresentationContext = true
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = .black
-        tableView.separatorColor = .gray
+        //tableView.backgroundColor = .black
+        //tableView.separatorColor = .gray
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
@@ -159,13 +161,25 @@ extension AddClockViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController.sections, sections.count > 0 {
+          return sections[section].name
+        } else {
+          return nil
+        }
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return fetchedResultsController.sectionIndexTitles
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let city = fetchedResultsController.object(at: indexPath)
         //let city = isFiltering ? filteredZones[indexPath.row] : zones[indexPath.row]
-        cell.backgroundColor = .black
+        //cell.backgroundColor = .black
         cell.selectionStyle = .none
-        cell.textLabel?.textColor = .white
+        //cell.textLabel?.textColor = .white
         let zoneName = city.zoneName!.split(separator: "/")
         let cityName = zoneName[1]
         cell.textLabel?.text = "\(cityName), \(city.countryName!)"

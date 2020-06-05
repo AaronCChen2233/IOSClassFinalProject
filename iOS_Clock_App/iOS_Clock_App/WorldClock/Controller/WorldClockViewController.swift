@@ -31,10 +31,10 @@ class WorldClockViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = .black
+        //navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     override func viewDidLoad() {
@@ -65,11 +65,11 @@ class WorldClockViewController: UIViewController {
     
     private func setupWorldClockTableView() {
         worldClockTableView = UITableView()
-        worldClockTableView.backgroundColor = .black
+        //worldClockTableView.backgroundColor = .black
         worldClockTableView.dataSource = self
         worldClockTableView.delegate = self
         worldClockTableView.register(WorldClockTableViewCell.self, forCellReuseIdentifier: cellId)
-        worldClockTableView.separatorColor = .gray
+        //worldClockTableView.separatorColor = .gray
         view.addSubview(worldClockTableView)
         worldClockTableView.matchParent()
     }
@@ -152,19 +152,19 @@ extension WorldClockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WorldClockTableViewCell
-        let city = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
+        let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
         cell.selectionStyle = .none
-        cell.backgroundColor = .black
+        //cell.backgroundColor = .black
                 
         let calendar = Calendar.current
         let currHour = calendar.component(.hour, from: date)
         let currMinutes = calendar.component(.minute, from: date)
-        let calHour = currHour + ((city.gmtOffset/3600)-8)
+        let calHour = currHour + ((zone.gmtOffset/3600)-8)
         let hour = calHour > 0 ? calHour % 24 : (calHour + 24) % 24
         let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
         let minutesString = currMinutes < 10 ? "0\(currMinutes)" : "\(currMinutes)"
-        let differ = calHour < 0 ? "Yestoday, \((city.gmtOffset/3600)-8)" : calHour >= 24 ? "Tomorow, \((city.gmtOffset/3600)-8)" : "Today, \((city.gmtOffset/3600)-8)"
-        let zoneName = city.zoneName.split(separator: "/")
+        let differ = calHour < 0 ? "Yestoday, \((zone.gmtOffset/3600)-8)" : calHour >= 24 ? "Tomorow, \((zone.gmtOffset/3600)-8)" : "Today, \((zone.gmtOffset/3600)-8)"
+        let zoneName = zone.zoneName.split(separator: "/")
         let cityName = zoneName[1]
         
         cell.timeLable.text =  "\(hourString):\(minutesString)"
