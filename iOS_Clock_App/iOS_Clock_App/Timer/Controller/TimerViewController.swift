@@ -8,6 +8,9 @@
 
 import UIKit
 import UICircularProgressRing
+import AVFoundation
+
+import UserNotifications
 
 class TimerViewController: UIViewController {
     let buttonHeightAndWidth = 100
@@ -15,6 +18,8 @@ class TimerViewController: UIViewController {
     var isPause = false
     var leftSeconds = 0
     var timer = Timer()
+    var bombSoundEffect : AVAudioPlayer?
+    var sound : Sound = Sound.getAllSounds().first!
     
     let countDownTimerWithSecondsDatePicker = CountDownTimerWithSecondsDatePicker()
     var timePicker : UIView!
@@ -96,9 +101,8 @@ class TimerViewController: UIViewController {
         circularProgress = UICircularProgressRing()
         circularProgress.startAngle = 270
         circularProgress.innerRingColor = UIColor(named: "highlightOrange")!
-        circularProgress.outerRingColor = UIColor(named: "backgroundColor")!
+        circularProgress.outerRingColor = .lightGray
         circularProgress.fontColor = UIColor(named: "backgroundColor")!
-        circularProgress.isClockwise = false
         circularProgress.innerRingWidth = 10
         circularProgress.minValue = 0
         circularProgress.style = .ontop
@@ -117,7 +121,7 @@ class TimerViewController: UIViewController {
         soundNameLable.textColor = .gray
         
         /**test text*/
-        soundNameLable.text = "By the Seaside"
+        soundNameLable.text = sound.name.rawValue
         
         whenEndView.layer.cornerRadius = CGFloat(10);
         whenEndView.backgroundColor = .lightGray
@@ -173,15 +177,9 @@ class TimerViewController: UIViewController {
             timer.invalidate()
         }else{
             /**Start*/
-            
             /**If isn't runing reset leftSeconds if isruning just keep leftSeconds and resume*/
             if !isRuning{
-                /**Corvert to seconds*/
-                leftSeconds = (countDownTimerWithSecondsDatePicker.hour * 3600) + (countDownTimerWithSecondsDatePicker.min * 60) + countDownTimerWithSecondsDatePicker.sec
-                
-                circularProgress.maxValue = CGFloat(leftSeconds)
-                /**when start tip set text once*/
-                updateCountDownUI()
+                start()
             }
             
             /**Resume*/
@@ -213,14 +211,50 @@ class TimerViewController: UIViewController {
         
         if leftSeconds <= 0{
             /**Time 's up*/
-            cancelTimer()
+            timer.invalidate()
+            scheduleNotification()
         }
         circularProgress.value = CGFloat(leftSeconds)
         leftSeconds -= 1
     }
     
     @objc func selectWhenEndAction(){
-        print("whend")
+        let selectSoundVC = SelectSoundTableViewController()
+        selectSoundVC.curSound = Sound.getAllSounds().first
+        selectSoundVC.didSelect = updateSound
+        let navigationSelectionSoundVC = UINavigationController(rootViewController: selectSoundVC)
+        navigationSelectionSoundVC.modalPresentationStyle = .fullScreen
+        self.present(navigationSelectionSoundVC, animated: true)
+    }
+    
+    func scheduleNotification() {
+        /**Set notifiction select option*/
+        let center = UNUserNotificationCenter.current()
+        let acceptAction = UNNotificationAction(identifier: "STOP",
+                                                title: "Stop",
+                                                options: UNNotificationActionOptions(rawValue: 0))
+        let declineAction = UNNotificationAction(identifier: "REPEAT",
+                                                 title: "Repeat",
+                                                 options: UNNotificationActionOptions(rawValue: 0))
+        let meetingInviteCategory =
+            UNNotificationCategory(identifier: "TimerTimesUp",
+                                   actions: [acceptAction, declineAction],
+                                   intentIdentifiers: [],
+                                   hiddenPreviewsBodyPlaceholder: "",
+                                   options: .customDismissAction)
+        center.setNotificationCategories([meetingInviteCategory])
+        
+        center.delegate = self
+        let content = UNMutableNotificationContent()
+        content.title = "Timer"
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "\(sound.name).mp3"))
+        content.categoryIdentifier = "TimerTimesUp"
+        let request = UNNotificationRequest(identifier: "timer-alarm", content: content, trigger: nil)
+        center.add(request) { (error) in
+            if (error) != nil {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
     func setCircleButtonPath() {
@@ -252,8 +286,8 @@ class TimerViewController: UIViewController {
         /**set buttonUI depend on which state*/
         if isPause {
             startPauseButton.setTitle("Pause", for: .normal)
-            startPauseButton.backgroundColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 0.3)
-            startPauseButton.setTitleColor(.red, for: .normal)
+            startPauseButton.backgroundColor = UIColor(named: "highlightOrange")!.withAlphaComponent(0.5)
+            startPauseButton.setTitleColor(UIColor(named: "highlightOrange")!, for: .normal)
         }else{
             startPauseButton.setTitle("Start", for: .normal)
             startPauseButton.backgroundColor = UIColor(displayP3Red: 0, green: 1, blue: 0, alpha: 0.3)
@@ -271,5 +305,44 @@ class TimerViewController: UIViewController {
             circularProgress.isHidden = true
             countDownTimerWithSecondsDatePicker.view.isHidden = false
         }
+    }
+    
+    func start() {
+        /**Corvert to seconds*/
+        leftSeconds = (countDownTimerWithSecondsDatePicker.hour * 3600) + (countDownTimerWithSecondsDatePicker.min * 60) + countDownTimerWithSecondsDatePicker.sec
+        
+        circularProgress.maxValue = CGFloat(leftSeconds)
+        /**when start tip set text once*/
+        updateCountDownUI()
+    }
+    
+    func updateSound(new: Sound) {
+        sound = new
+        soundNameLable.text = sound.name.rawValue
+    }
+}
+
+// Handling notifications when the app is in the foreground
+extension TimerViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "STOP":
+            cancelTimer()
+            break
+        case "REPEAT":
+            start()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDownUI), userInfo: nil, repeats: true)
+            
+            break
+        default:
+             cancelTimer()
+            break
+        }
+        
+        completionHandler()
     }
 }
