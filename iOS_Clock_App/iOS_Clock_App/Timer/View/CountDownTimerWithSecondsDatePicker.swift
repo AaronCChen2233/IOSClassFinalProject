@@ -12,7 +12,9 @@ class CountDownTimerWithSecondsDatePicker : UIViewController, UIPickerViewDelega
     
     let hours = (0...23).map{String($0)}
     let minutOrSecond = (0...59).map{String($0)}
-    
+    var isZero : Bool {
+        return hour == 0 && min == 0 && sec == 0
+    }
     let hourLable : UILabel = {
         let lb = UILabel()
         lb.text = "hours"

@@ -20,6 +20,7 @@
 		7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F56B1247DCAA20028891C /* LaunchScreen.storyboard */; };
 		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
+		7B8AA5582489A7C7004F2580 /* SelectSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */; };
 		868524502487EBA700A970ED /* WorldClocksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244C2487EBA700A970ED /* WorldClocksController.swift */; };
 		868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */; };
 		868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244E2487EBA700A970ED /* WorldClockViewController.swift */; };
@@ -74,6 +75,7 @@
 		7B1F56B4247DCAA20028891C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerWithSecondsDatePicker.swift; sourceTree = "<group>"; };
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundTableViewController.swift; sourceTree = "<group>"; };
 		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
 		8685244C2487EBA700A970ED /* WorldClocksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClocksController.swift; sourceTree = "<group>"; };
 		8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				7B52149C2481D7980092D5B5 /* TimerViewController.swift */,
+				7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				B0DBB9B424806AD2000212EC /* AlarmTableViewController.swift in Sources */,
 				868524662487EBEF00A970ED /* URL+Params.swift in Sources */,
 				B027507F2487521F009CBB56 /* AlarmTableViewCell.swift in Sources */,
+				7B8AA5582489A7C7004F2580 /* SelectSoundTableViewController.swift in Sources */,
 				B0814FDC2481BB770087DC6A /* WeekTableViewController.swift in Sources */,
 				868524532487EBA700A970ED /* AddClockViewController.swift in Sources */,
 				B0DBB9C024819E50000212EC /* DatePickerTableViewCell.swift in Sources */,
