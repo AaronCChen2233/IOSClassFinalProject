@@ -230,18 +230,9 @@ class TimerViewController: UIViewController {
     func scheduleNotification() {
         /**Set notifiction select option*/
         let center = UNUserNotificationCenter.current()
-        let acceptAction = UNNotificationAction(identifier: "STOP",
-                                                title: "Stop",
-                                                options: UNNotificationActionOptions(rawValue: 0))
-        let declineAction = UNNotificationAction(identifier: "REPEAT",
-                                                 title: "Repeat",
-                                                 options: UNNotificationActionOptions(rawValue: 0))
-        let meetingInviteCategory =
-            UNNotificationCategory(identifier: "TimerTimesUp",
-                                   actions: [acceptAction, declineAction],
-                                   intentIdentifiers: [],
-                                   hiddenPreviewsBodyPlaceholder: "",
-                                   options: .customDismissAction)
+        let acceptAction = UNNotificationAction(identifier: "STOP", title: "Stop", options: UNNotificationActionOptions(rawValue: 0))
+        let declineAction = UNNotificationAction(identifier: "REPEAT", title: "Repeat", options: UNNotificationActionOptions(rawValue: 0))
+        let meetingInviteCategory = UNNotificationCategory(identifier: "TimerTimesUp", actions: [acceptAction, declineAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: .customDismissAction)
         center.setNotificationCategories([meetingInviteCategory])
         
         center.delegate = self
@@ -258,7 +249,7 @@ class TimerViewController: UIViewController {
     }
     
     func setCircleButtonPath() {
-        // TODO: - here if change mod so many time here will addsublayer so many time may have isuss check it later
+        /// TODO: - here if change mod so many time here will addsublayer so many time may have isuss check it later
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: buttonHeightAndWidth/2,y: buttonHeightAndWidth/2), radius: 46.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
         let circleLayer = CAShapeLayer()
         circleLayer.path = circlePath.cgPath
@@ -322,7 +313,7 @@ class TimerViewController: UIViewController {
     }
 }
 
-// Handling notifications when the app is in the foreground
+/**Handling notifications when the app is in the foreground*/
 extension TimerViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound, .badge])
@@ -336,7 +327,6 @@ extension TimerViewController: UNUserNotificationCenterDelegate {
         case "REPEAT":
             start()
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountDownUI), userInfo: nil, repeats: true)
-            
             break
         default:
              cancelTimer()

@@ -49,6 +49,7 @@ class SelectSoundTableViewController: UITableViewController {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.textLabel?.text = sounds[indexPath.row].name.rawValue
         cell.imageView?.image = UIImage(systemName: "checkmark")
+        /**If is selected let the checkmark image become orange else transparent*/
         cell.imageView?.tintColor = sounds[indexPath.row].name == curSound.name ? UIColor(named: "highlightOrange")! : UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
         return cell
     }
