@@ -36,6 +36,8 @@ class AddClockViewController: FetchedResultsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "backgroundColor")
+
         setupNavigation()
 
         setupSearchController()
