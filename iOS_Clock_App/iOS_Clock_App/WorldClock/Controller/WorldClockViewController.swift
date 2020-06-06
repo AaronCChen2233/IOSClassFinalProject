@@ -39,6 +39,7 @@ class WorldClockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "backgroundColor")
         
         setupNavigation()
         
@@ -51,7 +52,11 @@ class WorldClockViewController: UIViewController {
         startGCDTimer()
         
         //Once Add WorldClock, updateView
-        NotificationCenter.default.addObserver(worldClockTableView!, selector: #selector(worldClockTableView.reloadData), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
+    }
+    
+    @objc private func updateUI() {
+        worldClockTableView.reloadData()
     }
     
     private func setupNavigation() {
@@ -158,12 +163,16 @@ extension WorldClockViewController: UITableViewDataSource {
                 
         let calendar = Calendar.current
         let currHour = calendar.component(.hour, from: date)
-        let currMinutes = calendar.component(.minute, from: date)
-        let calHour = currHour + ((zone.gmtOffset/3600)-8)
+        let secondsFromGMTForDate = calendar.timeZone.secondsFromGMT(for: date) / 3600
+        let calHour = currHour + ((zone.gmtOffset/3600) - secondsFromGMTForDate)
         let hour = calHour > 0 ? calHour % 24 : (calHour + 24) % 24
         let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
+        
+        let currMinutes = calendar.component(.minute, from: date)
         let minutesString = currMinutes < 10 ? "0\(currMinutes)" : "\(currMinutes)"
-        let differ = calHour < 0 ? "Yestoday, \((zone.gmtOffset/3600)-8)" : calHour >= 24 ? "Tomorow, \((zone.gmtOffset/3600)-8)" : "Today, \((zone.gmtOffset/3600)-8)"
+        
+        let differ = calHour < 0 ? "Yestoday, \((zone.gmtOffset/3600)-secondsFromGMTForDate)" : calHour >= 24 ? "Tomorow, \((zone.gmtOffset/3600)-secondsFromGMTForDate)" : "Today, \((zone.gmtOffset/3600)-secondsFromGMTForDate)"
+        
         let zoneName = zone.zoneName.split(separator: "/")
         let cityName = zoneName[1]
         
