@@ -13,7 +13,7 @@ class WorldClockTableViewCell: UITableViewCell {
     let timeDifferenceLable: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.systemFont(ofSize: 18)
+        lb.font = UIFont.systemFont(ofSize: 17)
         //lb.textColor = .gray
         return lb
     }()
@@ -21,7 +21,7 @@ class WorldClockTableViewCell: UITableViewCell {
     let cityLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.boldSystemFont(ofSize: 30)
+        lb.font = UIFont.boldSystemFont(ofSize: 27)
         //lb.textColor = .white
         return lb
     }()
