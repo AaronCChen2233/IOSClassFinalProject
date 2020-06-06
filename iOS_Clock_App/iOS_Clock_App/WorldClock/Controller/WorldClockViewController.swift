@@ -202,6 +202,14 @@ class WorldClockViewController: UIViewController {
         cell.cityLabel.text = String(cityName)
     }
 
+    private func updateWorldClockDatabase(with zone: Zone) {
+        container.performBackgroundTask { context in
+            context.perform {
+                _ = try? ManagedWorldClock.findAndDeleteWorldClock(matching: zone, with: zone.zoneName, in: context)
+                try? context.save()
+            }
+        }
+    }
 }
 
 extension WorldClockViewController: UITableViewDataSource {
@@ -238,7 +246,9 @@ extension WorldClockViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
             WorldClocksController.shared.worldClocks.worldClockList.remove(at: indexPath.row)
+            self.updateWorldClockDatabase(with: zone)
         }
     }
     

@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class ManagedWorldClock: NSManagedObject {
+    
+    
     class func readAllWorldClock(in context: NSManagedObjectContext, completion: @escaping ([Zone]?) -> Void) {
         let request: NSFetchRequest<ManagedWorldClock> = ManagedWorldClock.fetchRequest()
         do {
@@ -54,6 +56,20 @@ class ManagedWorldClock: NSManagedObject {
             timestamp: worldClockInfo.timestamp,
             zoneName: worldClockInfo.zoneName)
         return worldClock
+    }
+    
+    class func findAndDeleteWorldClock(matching worldClockInfo: Zone, with zoneName: String, in context: NSManagedObjectContext) throws {
+        let request: NSFetchRequest<ManagedWorldClock> = ManagedWorldClock.fetchRequest()
+        request.predicate = NSPredicate(format: "zoneName = %@", worldClockInfo.zoneName)
+        do {
+            let matches = try context.fetch(request)
+            if matches.count > 0 {
+                assert(matches.count == 1, "ManagedWorldClock.findOrCreateTimeZone -- database inconsistency")
+            }
+            context.delete(matches[0])
+        } catch {
+            throw error
+        }
     }
 }
 
