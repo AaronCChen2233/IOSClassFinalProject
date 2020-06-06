@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class WorldClockViewController: UIViewController {
+    private var noClockLable: UILabel!
     private var worldClockTableView: UITableView!
     private var addButton: UIBarButtonItem!
     
@@ -43,6 +44,8 @@ class WorldClockViewController: UIViewController {
         
         setupNavigation()
         
+        setupNoClockLabel()
+        
         setupWorldClockTableView()
         
         loadExistedWorldClock()
@@ -56,7 +59,14 @@ class WorldClockViewController: UIViewController {
     }
     
     @objc private func updateUI() {
-        worldClockTableView.reloadData()
+        if WorldClocksController.shared.worldClocks.worldClockList.count == 0 {
+            worldClockTableView.isHidden = true
+            noClockLable.isHidden = false
+        }else {
+            noClockLable.isHidden = true
+            worldClockTableView.isHidden = false
+            worldClockTableView.reloadData()
+        }
     }
     
     private func setupNavigation() {
@@ -66,6 +76,18 @@ class WorldClockViewController: UIViewController {
         addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(gotoAddClock))
         addButton.tintColor = UIColor(named: "highlightOrange")
         navigationItem.rightBarButtonItem = addButton
+    }
+    
+    private func setupNoClockLabel() {
+        noClockLable = {
+            let lb = UILabel()
+            lb.translatesAutoresizingMaskIntoConstraints = false
+            lb.font = UIFont.systemFont(ofSize: 30)
+            lb.text = "No World Clocks"
+            return lb
+        }()
+        view.addSubview(noClockLable)
+        noClockLable.centerXYin(view)
     }
     
     private func setupWorldClockTableView() {
@@ -148,6 +170,38 @@ class WorldClockViewController: UIViewController {
         let addVC = UINavigationController(rootViewController: rootViewController)
         present(addVC, animated: true, completion: nil)
     }
+    
+    private func configerCell(cell: WorldClockTableViewCell, forItemAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+        
+        let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
+        
+        let secondsInOneHour = 3600
+        let calendar = Calendar.current
+        
+        let currHour = calendar.component(.hour, from: date)
+        let CurrGMTForDateInHour = calendar.timeZone.secondsFromGMT(for: date) / secondsInOneHour
+        let zoneGmtOffsetInHour = zone.gmtOffset/secondsInOneHour
+        let differHour = currHour - CurrGMTForDateInHour + zoneGmtOffsetInHour
+        
+        let differ = differHour < 0 ?
+        "Yestoday, \(zoneGmtOffsetInHour - CurrGMTForDateInHour)" :
+        differHour >= 24 ? "Tomorow, \(zoneGmtOffsetInHour - CurrGMTForDateInHour)" :
+        "Today, \(zoneGmtOffsetInHour - CurrGMTForDateInHour)"
+        
+        let hour = differHour > 0 ? differHour % 24 : (differHour + 24) % 24
+        let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
+        let currMinutes = calendar.component(.minute, from: date)
+        let minutesString = currMinutes < 10 ? "0\(currMinutes)" : "\(currMinutes)"
+        
+        let zoneName = zone.zoneName.split(separator: "/")
+        let cityName = zoneName[1]
+        
+        cell.timeLable.text =  "\(hourString):\(minutesString)"
+        cell.timeDifferenceLable.text = "\(differ)HR"
+        cell.cityLabel.text = String(cityName)
+    }
+
 }
 
 extension WorldClockViewController: UITableViewDataSource {
@@ -157,32 +211,10 @@ extension WorldClockViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! WorldClockTableViewCell
-        let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
-        cell.selectionStyle = .none
-        //cell.backgroundColor = .black
-                
-        let calendar = Calendar.current
-        let currHour = calendar.component(.hour, from: date)
-        let secondsFromGMTForDate = calendar.timeZone.secondsFromGMT(for: date) / 3600
-        let calHour = currHour + ((zone.gmtOffset/3600) - secondsFromGMTForDate)
-        let hour = calHour > 0 ? calHour % 24 : (calHour + 24) % 24
-        let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
-        
-        let currMinutes = calendar.component(.minute, from: date)
-        let minutesString = currMinutes < 10 ? "0\(currMinutes)" : "\(currMinutes)"
-        
-        let differ = calHour < 0 ? "Yestoday, \((zone.gmtOffset/3600)-secondsFromGMTForDate)" : calHour >= 24 ? "Tomorow, \((zone.gmtOffset/3600)-secondsFromGMTForDate)" : "Today, \((zone.gmtOffset/3600)-secondsFromGMTForDate)"
-        
-        let zoneName = zone.zoneName.split(separator: "/")
-        let cityName = zoneName[1]
-        
-        cell.timeLable.text =  "\(hourString):\(minutesString)"
-        cell.timeDifferenceLable.text = "\(differ)HR"
-        cell.cityLabel.text = String(cityName)
-        
+        configerCell(cell: cell, forItemAt: indexPath)
         return cell
     }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
@@ -207,8 +239,6 @@ extension WorldClockViewController: UITableViewDelegate {
         if editingStyle == .delete {
             // Delete the row from the data source
             WorldClocksController.shared.worldClocks.worldClockList.remove(at: indexPath.row)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     

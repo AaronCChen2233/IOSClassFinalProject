@@ -21,6 +21,7 @@
 		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
 		7B8AA5582489A7C7004F2580 /* SelectSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */; };
+		864AB6CE248B33F700EFDEE3 /* NoClockLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864AB6CD248B33F700EFDEE3 /* NoClockLable.swift */; };
 		868524502487EBA700A970ED /* WorldClocksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244C2487EBA700A970ED /* WorldClocksController.swift */; };
 		868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */; };
 		868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244E2487EBA700A970ED /* WorldClockViewController.swift */; };
@@ -77,6 +78,7 @@
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundTableViewController.swift; sourceTree = "<group>"; };
 		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
+		864AB6CD248B33F700EFDEE3 /* NoClockLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClockLable.swift; sourceTree = "<group>"; };
 		8685244C2487EBA700A970ED /* WorldClocksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClocksController.swift; sourceTree = "<group>"; };
 		8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		8685244E2487EBA700A970ED /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */,
+				864AB6CD248B33F700EFDEE3 /* NoClockLable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				7B0A0ECA247F180300313926 /* UIColor+HexRgb.swift in Sources */,
 				B027507B248751C4009CBB56 /* Week.swift in Sources */,
 				7B0A0EC4247F142A00313926 /* MainTabBarViewController.swift in Sources */,
+				864AB6CE248B33F700EFDEE3 /* NoClockLable.swift in Sources */,
 				868524622487EBCB00A970ED /* TimeZoneRequest.swift in Sources */,
 				B0335BFB2482EEC20026F6FA /* LabelViewController.swift in Sources */,
 				868524502487EBA700A970ED /* WorldClocksController.swift in Sources */,
