@@ -186,6 +186,11 @@ extension WorldClockViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let zone = WorldClocksController.shared.worldClocks.worldClockList.remove(at: sourceIndexPath.row)
+        WorldClocksController.shared.worldClocks.worldClockList.insert(zone, at: destinationIndexPath.row)
+    }
 }
 
 extension WorldClockViewController: UITableViewDelegate {
