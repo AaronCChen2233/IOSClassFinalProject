@@ -192,8 +192,8 @@ extension AddClockViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let didSelectZone = fetchedResultsController.object(at: indexPath).converToZone()
         //let didSelectZone = isFiltering ? filteredZones[indexPath.row] : zones[indexPath.row]
-        if !WorldClocksController.shared.worldClocks.worldClockList.contains(where: { (city) -> Bool in
-            return city == didSelectZone
+        if !WorldClocksController.shared.worldClocks.worldClockList.contains(where: { (zone) -> Bool in
+            return zone == didSelectZone
         }) {
             WorldClocksController.shared.worldClocks.worldClockList.append(didSelectZone)
             self.updateWorldClockDatabase(with: didSelectZone)
