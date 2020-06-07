@@ -21,6 +21,7 @@ class AlarmTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Alarm"
+        view.backgroundColor = UIColor(named: "backgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewAlarmTVC(_:)))
