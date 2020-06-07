@@ -13,6 +13,7 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     let buttonHeightAndWidth = 100
     let cellId = "Cell"
     var fractions = 0
+    var lapFraction = 0
     var isRuning = false
     var timer = Timer()
     var lapDatas = [String]()
@@ -20,6 +21,7 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     var lapResetButton : UIButton!
     var startStopButton : UIButton!
     var lapTableView : UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +83,10 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     @objc func lapOrReset(){
         if isRuning{
             /**Lap*/
-            lapDatas.append(timeGoesLable.text!)
-            let newRow = IndexPath(row: lapDatas.count-1, section: 0)
+            lapDatas.insert(fractionToString(lapFraction), at: 0)
+            let newRow = IndexPath(row: 0, section: 0)
             lapTableView.insertRows(at: [newRow], with: .automatic)
-            
-            /**scroll to bottom*/
-            lapTableView.scrollToRow(at: newRow, at: .bottom, animated: true)
+            lapFraction = 0
         }else{
             /**Reset*/
             timeGoesLable.text = "00:00.00"
@@ -103,6 +103,12 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         }else{
             /**Start*/
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetimeGoesLable), userInfo: nil, repeats: true)
+            
+            if(fractions == 0){
+                lapDatas.insert(timeGoesLable.text!, at: 0)
+                let newRow = IndexPath(row: 0, section: 0)
+                lapTableView.insertRows(at: [newRow], with: .automatic)
+            }
         }
         isRuning.toggle()
         setButtonUI()
@@ -110,11 +116,20 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     
     @objc func updatetimeGoesLable(){
         fractions += 1
+        lapFraction += 1
+        timeGoesLable.text = fractionToString(fractions)
+        
+        lapDatas[0] = fractionToString(lapFraction)
+        let newRow = IndexPath(row: 0, section: 0)
+        lapTableView.reloadRows(at: [newRow], with: .none)
+    }
+    
+    func fractionToString(_ inputFraction : Int) -> String{
         /**Converte fractions to minute second and fractions*/
-        let m = Int(fractions/6000)
-        let s = Int((fractions-(m*6000))/100)
-        let f = fractions % 100
-        timeGoesLable.text = String(format: "%02d:%02d.%02d", m, s, f)
+        let m = Int(inputFraction/6000)
+        let s = Int((inputFraction-(m*6000))/100)
+        let f = inputFraction % 100
+        return String(format: "%02d:%02d.%02d", m, s, f)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,7 +139,7 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellId)
         cell.backgroundColor = UIColor(named: "backgroundColor")
-        cell.textLabel?.text = "Lap \(indexPath.row + 1)"
+        cell.textLabel?.text = "Lap \(lapDatas.count)"
         cell.detailTextLabel?.text = lapDatas[indexPath.row]
         return cell
     }
