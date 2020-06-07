@@ -23,8 +23,12 @@ class AlarmTableViewController: UITableViewController {
         title = "Alarm"
         view.backgroundColor = UIColor(named: "backgroundColor")
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewAlarmTVC(_:)))
+        let eb = editButtonItem
+        eb.tintColor = UIColor(named: "highlightOrange")
+        navigationItem.leftBarButtonItem = eb
+        let ab = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showNewAlarmTVC(_:)))
+        ab.tintColor = UIColor(named: "highlightOrange")
+        navigationItem.rightBarButtonItem = ab
         tableView.allowsSelectionDuringEditing = true
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
