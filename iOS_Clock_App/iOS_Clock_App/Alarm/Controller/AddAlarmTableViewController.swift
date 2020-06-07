@@ -38,12 +38,8 @@ class AddAlarmTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add Alarm"
-        let lb = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped(_:)))
-        lb.tintColor = UIColor(named: "highlightOrange")
-        navigationItem.leftBarButtonItem = lb
-        let rb = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped(_:)))
-        rb.tintColor = UIColor(named: "highlightOrange")
-        navigationItem.rightBarButtonItem = rb
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped(_:)))
         timeCell.datePicker.date = newAlarm.date
     }
     
