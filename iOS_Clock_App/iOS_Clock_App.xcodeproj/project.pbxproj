@@ -21,6 +21,13 @@
 		7B42F075248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B42F074248434A00042D6E6 /* CountDownTimerWithSecondsDatePicker.swift */; };
 		7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52149C2481D7980092D5B5 /* TimerViewController.swift */; };
 		7B8AA5582489A7C7004F2580 /* SelectSoundTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */; };
+		86102924248E3826006406CD /* zone.csv in Resources */ = {isa = PBXBuildFile; fileRef = 8610291F248E3826006406CD /* zone.csv */; };
+		86102925248E3826006406CD /* timezone.csv in Resources */ = {isa = PBXBuildFile; fileRef = 86102920248E3826006406CD /* timezone.csv */; };
+		86102926248E3826006406CD /* country.csv in Resources */ = {isa = PBXBuildFile; fileRef = 86102921248E3826006406CD /* country.csv */; };
+		86102927248E3826006406CD /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86102922248E3826006406CD /* readme.txt */; };
+		86102928248E3826006406CD /* database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 86102923248E3826006406CD /* database.sql */; };
+		8610292D248E3874006406CD /* String+DPStringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8610292C248E3874006406CD /* String+DPStringTool.swift */; };
+		8610292F248E389B006406CD /* CSVUsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8610292E248E389B006406CD /* CSVUsing.swift */; };
 		868524502487EBA700A970ED /* WorldClocksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244C2487EBA700A970ED /* WorldClocksController.swift */; };
 		868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */; };
 		868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8685244E2487EBA700A970ED /* WorldClockViewController.swift */; };
@@ -77,6 +84,13 @@
 		7B52149C2481D7980092D5B5 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7B8AA5572489A7C7004F2580 /* SelectSoundTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSoundTableViewController.swift; sourceTree = "<group>"; };
 		838A2FAB3A257D36EDDF05D5 /* Pods-iOS_Clock_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.release.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.release.xcconfig"; sourceTree = "<group>"; };
+		8610291F248E3826006406CD /* zone.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zone.csv; sourceTree = "<group>"; };
+		86102920248E3826006406CD /* timezone.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timezone.csv; sourceTree = "<group>"; };
+		86102921248E3826006406CD /* country.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = country.csv; sourceTree = "<group>"; };
+		86102922248E3826006406CD /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		86102923248E3826006406CD /* database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.sql; sourceTree = "<group>"; };
+		8610292C248E3874006406CD /* String+DPStringTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DPStringTool.swift"; sourceTree = "<group>"; };
+		8610292E248E389B006406CD /* CSVUsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVUsing.swift; sourceTree = "<group>"; };
 		8685244C2487EBA700A970ED /* WorldClocksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClocksController.swift; sourceTree = "<group>"; };
 		8685244D2487EBA700A970ED /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
 		8685244E2487EBA700A970ED /* WorldClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +172,7 @@
 		7B0A0EBF247F12CF00313926 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8610292E248E389B006406CD /* CSVUsing.swift */,
 				7B0A0EC3247F142A00313926 /* MainTabBarViewController.swift */,
 			);
 			path = Controller;
@@ -166,6 +181,7 @@
 		7B0A0EC0247F12DC00313926 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8610291E248E3826006406CD /* timezonedb.csv */,
 				868524582487EBBA00A970ED /* Model.xcdatamodeld */,
 			);
 			path = Model;
@@ -186,6 +202,7 @@
 				7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */,
 				7B0A0EC5247F180300313926 /* UIView+ConstraintLayout.swift */,
 				7B0A0EC8247F180300313926 /* VerticalStackView.swift */,
+				8610292C248E3874006406CD /* String+DPStringTool.swift */,
 				868524642487EBEF00A970ED /* Array+Diff.swift */,
 				868524632487EBEF00A970ED /* URL+Params.swift */,
 			);
@@ -226,6 +243,18 @@
 				7B1F56B4247DCAA20028891C /* Info.plist */,
 			);
 			path = iOS_Clock_App;
+			sourceTree = "<group>";
+		};
+		8610291E248E3826006406CD /* timezonedb.csv */ = {
+			isa = PBXGroup;
+			children = (
+				8610291F248E3826006406CD /* zone.csv */,
+				86102920248E3826006406CD /* timezone.csv */,
+				86102921248E3826006406CD /* country.csv */,
+				86102922248E3826006406CD /* readme.txt */,
+				86102923248E3826006406CD /* database.sql */,
+			);
+			path = timezonedb.csv;
 			sourceTree = "<group>";
 		};
 		868524602487EBCB00A970ED /* NetWork */ = {
@@ -440,14 +469,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B03F048624847CC100C1AA16 /* bomb.mp3 in Resources */,
+				86102928248E3826006406CD /* database.sql in Resources */,
 				B03F048524847CC100C1AA16 /* school_bell.mp3 in Resources */,
 				B03F048024847CC100C1AA16 /* siren.mp3 in Resources */,
 				B03F047324847ADC00C1AA16 /* tickle.mp3 in Resources */,
 				B03F047F24847CC100C1AA16 /* rooster.mp3 in Resources */,
 				B0E4CC942484BF1300C1A3EA /* buzz.mp3 in Resources */,
+				86102927248E3826006406CD /* readme.txt in Resources */,
 				B03F048224847CC100C1AA16 /* analog.mp3 in Resources */,
+				86102925248E3826006406CD /* timezone.csv in Resources */,
 				7B1F56B3247DCAA20028891C /* LaunchScreen.storyboard in Resources */,
+				86102926248E3826006406CD /* country.csv in Resources */,
 				B0E4CC932484BF1300C1A3EA /* cop_car.mp3 in Resources */,
+				86102924248E3826006406CD /* zone.csv in Resources */,
 				B03F047E24847CC100C1AA16 /* house_fire_alarm.mp3 in Resources */,
 				7B1F56B0247DCAA20028891C /* Assets.xcassets in Resources */,
 				B03F04702484790700C1AA16 /* bell.mp3 in Resources */,
@@ -533,6 +567,7 @@
 				7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
 				8685245E2487EBBA00A970ED /* Model.xcdatamodeld in Sources */,
+				8610292D248E3874006406CD /* String+DPStringTool.swift in Sources */,
 				86ADCF62248DD2ED00AB6679 /* FetchedResultsTableViewController.swift in Sources */,
 				8685245B2487EBBA00A970ED /* ManagedWorldClock.swift in Sources */,
 				B027507A248751C4009CBB56 /* Sound.swift in Sources */,
@@ -541,6 +576,7 @@
 				B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */,
 				B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */,
 				868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */,
+				8610292F248E389B006406CD /* CSVUsing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
