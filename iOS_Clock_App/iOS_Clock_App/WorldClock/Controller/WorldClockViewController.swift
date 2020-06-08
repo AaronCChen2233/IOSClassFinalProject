@@ -55,19 +55,19 @@ class WorldClockViewController: UIViewController {
         startGCDTimer()
         
         //Once Add WorldClock, updateView
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
     }
     
-    @objc private func updateUI() {
-        if WorldClocksController.shared.worldClocks.worldClockList.count == 0 {
-            worldClockTableView.isHidden = true
-            noClockLable.isHidden = false
-        }else {
-            noClockLable.isHidden = true
-            worldClockTableView.isHidden = false
-            worldClockTableView.reloadData()
-        }
-    }
+//    @objc private func updateUI() {
+//        if WorldClocksController.shared.worldClocks.worldClockList.count == 0 {
+//            worldClockTableView.isHidden = true
+//            noClockLable.isHidden = false
+//        }else {
+//            noClockLable.isHidden = true
+//            worldClockTableView.isHidden = false
+//            //worldClockTableView.reloadData()
+//        }
+//    }
     
     private func setupNavigation() {
         navigationItem.title = "World Clock"
@@ -161,7 +161,7 @@ class WorldClockViewController: UIViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
       super.setEditing(editing, animated: animated)
-        worldClockTableView.setEditing(editing, animated: true)
+        worldClockTableView.setEditing(editing, animated: animated)
     }
     
     @objc func gotoAddClock(_ sender: UIBarButtonItem) {
@@ -202,11 +202,18 @@ class WorldClockViewController: UIViewController {
         cell.cityLabel.text = String(cityName)
     }
 
-    private func updateWorldClockDatabase(with zone: Zone) {
+    private func changeWorldClockOrderDatabase(with zone: Zone, from sourceOrder: Int, to destinationOrder: Int) {
+        container.performBackgroundTask { context in
+            context.perform {
+                _ = try? ManagedWorldClock.changeWorldClockOrder(matching: zone, with: zone.zoneName, from:sourceOrder, to: destinationOrder, in: context)
+            }
+        }
+    }
+    
+    private func deleteWorldClockDatabase(with zone: Zone) {
         container.performBackgroundTask { context in
             context.perform {
                 _ = try? ManagedWorldClock.findAndDeleteWorldClock(matching: zone, with: zone.zoneName, in: context)
-                try? context.save()
             }
         }
     }
@@ -214,6 +221,13 @@ class WorldClockViewController: UIViewController {
 
 extension WorldClockViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if WorldClocksController.shared.worldClocks.worldClockList.count == 0 {
+            worldClockTableView.isHidden = true
+            noClockLable.isHidden = false
+        }else {
+            noClockLable.isHidden = true
+            worldClockTableView.isHidden = false
+        }
         return WorldClocksController.shared.worldClocks.worldClockList.count
     }
     
@@ -222,21 +236,22 @@ extension WorldClockViewController: UITableViewDataSource {
         configerCell(cell: cell, forItemAt: indexPath)
         return cell
     }
-        
+}
+
+extension WorldClockViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let zone = WorldClocksController.shared.worldClocks.worldClockList.remove(at: sourceIndexPath.row)
         WorldClocksController.shared.worldClocks.worldClockList.insert(zone, at: destinationIndexPath.row)
-    }
-}
-
-extension WorldClockViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+        self.changeWorldClockOrderDatabase(with: zone, from:sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -247,10 +262,10 @@ extension WorldClockViewController: UITableViewDelegate {
         if editingStyle == .delete {
             // Delete the row from the data source
             let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
+            self.deleteWorldClockDatabase(with: zone)
             WorldClocksController.shared.worldClocks.worldClockList.remove(at: indexPath.row)
-            self.updateWorldClockDatabase(with: zone)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-    
 }
 
