@@ -91,10 +91,6 @@ class ManagedWorldClock: NSManagedObject {
                 }
             }
             matches[selected].order = Int32(destinationOrder)
-            for match in matches {
-                print("\(match.order)\n")
-            }
-            print("\n")
             try? context.save()
         } catch {
             throw error

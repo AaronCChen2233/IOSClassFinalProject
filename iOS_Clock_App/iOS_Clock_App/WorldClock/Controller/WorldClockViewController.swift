@@ -55,19 +55,8 @@ class WorldClockViewController: UIViewController {
         startGCDTimer()
         
         //Once Add WorldClock, updateView
-        //NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
+        NotificationCenter.default.addObserver(worldClockTableView!, selector: #selector(worldClockTableView.reloadData), name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
     }
-    
-//    @objc private func updateUI() {
-//        if WorldClocksController.shared.worldClocks.worldClockList.count == 0 {
-//            worldClockTableView.isHidden = true
-//            noClockLable.isHidden = false
-//        }else {
-//            noClockLable.isHidden = true
-//            worldClockTableView.isHidden = false
-//            //worldClockTableView.reloadData()
-//        }
-//    }
     
     private func setupNavigation() {
         navigationItem.title = "World Clock"
@@ -132,7 +121,9 @@ class WorldClockViewController: UIViewController {
         codeTimer.schedule(deadline: .now(), repeating: .seconds(1))
         // 设定时间源的触发事件
         codeTimer.setEventHandler(handler: {
-            self.date = Date()
+            if Calendar.current.component(.minute, from: Date()) != Calendar.current.component(.minute, from: self.date) {
+                self.date = Date()
+            }
         })
         // 判断是否取消，如果已经取消了，调用resume()方法时就会崩溃！！！
         if codeTimer.isCancelled { return }
@@ -262,9 +253,8 @@ extension WorldClockViewController: UITableViewDelegate {
         if editingStyle == .delete {
             // Delete the row from the data source
             let zone = WorldClocksController.shared.worldClocks.worldClockList[indexPath.row]
-            self.deleteWorldClockDatabase(with: zone)
             WorldClocksController.shared.worldClocks.worldClockList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.deleteWorldClockDatabase(with: zone)
         }
     }
 }
