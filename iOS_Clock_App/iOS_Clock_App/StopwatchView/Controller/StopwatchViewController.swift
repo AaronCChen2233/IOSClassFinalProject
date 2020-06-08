@@ -14,14 +14,28 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     let cellId = "Cell"
     var fractions = 0
     var lapFraction = 0
+    
+    var maxValue = 0 {
+        didSet {
+            changeMaxAndMinCellColor(oldValue)
+            changeMaxAndMinCellColor(maxValue)
+        }
+    }
+    
+    var minValue = Int.max {
+        didSet {
+            changeMaxAndMinCellColor(oldValue)
+            changeMaxAndMinCellColor(minValue)
+        }
+    }
+    
     var isRuning = false
     var timer = Timer()
-    var lapDatas = [String]()
+    var lapDatas = [Int]()
     var timeGoesLable : UILabel!
     var lapResetButton : UIButton!
     var startStopButton : UIButton!
     var lapTableView : UITableView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,15 +97,20 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     @objc func lapOrReset(){
         if isRuning{
             /**Lap*/
-            lapDatas.insert(fractionToString(lapFraction), at: 0)
+            lapDatas.insert(lapFraction, at: 0)
+            
             let newRow = IndexPath(row: 0, section: 0)
-            lapTableView.insertRows(at: [newRow], with: .automatic)
+            lapTableView.insertRows(at: [newRow], with: .none)
+            setMaxAndMinValue()
             lapFraction = 0
         }else{
             /**Reset*/
             timeGoesLable.text = "00:00.00"
             fractions = 0
-            lapDatas = [String]()
+            lapFraction = 0
+            maxValue = 0
+            minValue = Int.max
+            lapDatas = [Int]()
             lapTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
         }
     }
@@ -105,9 +124,11 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetimeGoesLable), userInfo: nil, repeats: true)
             
             if(fractions == 0){
-                lapDatas.insert(timeGoesLable.text!, at: 0)
+                lapDatas.insert(lapFraction, at: 0)
+                
                 let newRow = IndexPath(row: 0, section: 0)
                 lapTableView.insertRows(at: [newRow], with: .automatic)
+                setMaxAndMinValue()
             }
         }
         isRuning.toggle()
@@ -119,9 +140,34 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         lapFraction += 1
         timeGoesLable.text = fractionToString(fractions)
         
-        lapDatas[0] = fractionToString(lapFraction)
+        lapDatas[0] = lapFraction
         let newRow = IndexPath(row: 0, section: 0)
         lapTableView.reloadRows(at: [newRow], with: .none)
+    }
+    
+    func setMaxAndMinValue(){
+        /**keep max*/
+        if maxValue < lapFraction{
+            maxValue = lapFraction
+        }
+        
+        /**keep min exept lapFraction != 0 because if say minValue is 0 there will always keep 0*/
+        if minValue > lapFraction && lapFraction != 0{
+            minValue = lapFraction
+        }
+    }
+    
+    func changeMaxAndMinCellColor(_ reloadValue: Int){
+        /**only when lapDatas's count bigger than 2 will change color*/
+        if lapDatas.count > 2{
+            /**Because old minValue or maxValue maybe appeared more than one times, so use for loop to reload all old minValue or maxValue*/
+            for i in 1...lapDatas.count-1{
+                if lapDatas[i] == reloadValue{
+                    let newRow = IndexPath(row: i, section: 0)
+                    lapTableView.reloadRows(at: [newRow], with: .none)
+                }
+            }
+        }
     }
     
     func fractionToString(_ inputFraction : Int) -> String{
@@ -137,15 +183,29 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let lapFractionDate = lapDatas[indexPath.row]
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellId)
         cell.backgroundColor = UIColor(named: "backgroundColor")
-        cell.textLabel?.text = "Lap \(lapDatas.count)"
-        cell.detailTextLabel?.text = lapDatas[indexPath.row]
+        /**Because the order is reverse so use lapDatas.count - indexPath.row*/
+        cell.textLabel?.text = "Lap \(lapDatas.count - indexPath.row)"
+        cell.detailTextLabel?.text = fractionToString(lapFractionDate)
+        
+        /**Set colors*/
+        if lapFractionDate == maxValue{
+            cell.textLabel?.textColor = .red
+            cell.detailTextLabel?.textColor = .red
+        }
+        
+        if lapFractionDate == minValue{
+            cell.textLabel?.textColor = .green
+            cell.detailTextLabel?.textColor = .green
+        }
+                
         return cell
     }
     
     func setCircleButtonPath() {
-        // TODO: - here if change mod so many time here will addsublayer so many time may have isuss check it later
+        /// TODO: - here if change mod so many time here will addsublayer so many time may have isuss check it later
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: buttonHeightAndWidth/2,y: buttonHeightAndWidth/2), radius: 46.0, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
         let circleLayer = CAShapeLayer()
         circleLayer.path = circlePath.cgPath
@@ -178,5 +238,3 @@ class StopwatchViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 }
-
-
