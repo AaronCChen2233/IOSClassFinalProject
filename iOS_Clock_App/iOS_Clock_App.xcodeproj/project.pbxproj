@@ -33,7 +33,7 @@
 		868524622487EBCB00A970ED /* TimeZoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524612487EBCB00A970ED /* TimeZoneRequest.swift */; };
 		868524662487EBEF00A970ED /* URL+Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524632487EBEF00A970ED /* URL+Params.swift */; };
 		868524672487EBEF00A970ED /* Array+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524642487EBEF00A970ED /* Array+Diff.swift */; };
-		868524682487EBEF00A970ED /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */; };
+		86ADCF62248DD2ED00AB6679 /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADCF61248DD2ED00AB6679 /* FetchedResultsTableViewController.swift */; };
 		B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275071248751C4009CBB56 /* ManagedAlarm.swift */; };
 		B0275078248751C4009CBB56 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275072248751C4009CBB56 /* Alarm.swift */; };
 		B027507A248751C4009CBB56 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0275075248751C4009CBB56 /* Sound.swift */; };
@@ -89,7 +89,7 @@
 		868524612487EBCB00A970ED /* TimeZoneRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeZoneRequest.swift; sourceTree = "<group>"; };
 		868524632487EBEF00A970ED /* URL+Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Params.swift"; sourceTree = "<group>"; };
 		868524642487EBEF00A970ED /* Array+Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Diff.swift"; sourceTree = "<group>"; };
-		868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
+		86ADCF61248DD2ED00AB6679 /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		9FD2DECBAC1C8C00214DFA97 /* Pods-iOS_Clock_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_Clock_App.debug.xcconfig"; path = "Target Support Files/Pods-iOS_Clock_App/Pods-iOS_Clock_App.debug.xcconfig"; sourceTree = "<group>"; };
 		B0275071248751C4009CBB56 /* ManagedAlarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAlarm.swift; sourceTree = "<group>"; };
 		B0275072248751C4009CBB56 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
@@ -181,12 +181,12 @@
 		7B0A0EC2247F12F700313926 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				86ADCF61248DD2ED00AB6679 /* FetchedResultsTableViewController.swift */,
 				7B0A0EC7247F180300313926 /* HorizontalStackView.swift */,
 				7B0A0EC6247F180300313926 /* UIColor+HexRgb.swift */,
 				7B0A0EC5247F180300313926 /* UIView+ConstraintLayout.swift */,
 				7B0A0EC8247F180300313926 /* VerticalStackView.swift */,
 				868524642487EBEF00A970ED /* Array+Diff.swift */,
-				868524652487EBEF00A970ED /* FetchedResultsTableViewController.swift */,
 				868524632487EBEF00A970ED /* URL+Params.swift */,
 			);
 			path = Utils;
@@ -533,11 +533,11 @@
 				7B52149D2481D7980092D5B5 /* TimerViewController.swift in Sources */,
 				7B0A0EC9247F180300313926 /* UIView+ConstraintLayout.swift in Sources */,
 				8685245E2487EBBA00A970ED /* Model.xcdatamodeld in Sources */,
+				86ADCF62248DD2ED00AB6679 /* FetchedResultsTableViewController.swift in Sources */,
 				8685245B2487EBBA00A970ED /* ManagedWorldClock.swift in Sources */,
 				B027507A248751C4009CBB56 /* Sound.swift in Sources */,
 				B0DBB9BC24819227000212EC /* AddAlarmTableViewController.swift in Sources */,
 				868524522487EBA700A970ED /* WorldClockViewController.swift in Sources */,
-				868524682487EBEF00A970ED /* FetchedResultsTableViewController.swift in Sources */,
 				B0275077248751C4009CBB56 /* ManagedAlarm.swift in Sources */,
 				B03F046C2483016D00C1AA16 /* SoundTableViewController.swift in Sources */,
 				868524512487EBA700A970ED /* WorldClockTableViewCell.swift in Sources */,

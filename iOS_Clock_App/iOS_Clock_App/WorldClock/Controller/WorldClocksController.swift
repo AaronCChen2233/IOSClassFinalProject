@@ -11,17 +11,18 @@ import Foundation
 class WorldClocksController {
     init() {}
     
-    var worldClocks = WorldClockList() {
-        didSet{
-            NotificationCenter.default.post(name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
-        }
-    }
+    var worldClocks = WorldClockList()
+//    {
+//        didSet{
+//            NotificationCenter.default.post(name: WorldClocksController.worldClocksUpdatedNotification, object: nil)
+//        }
+//    }
     var zones = [Zone]() {
         didSet{
             NotificationCenter.default.post(name: WorldClocksController.zonesUpdatedNotification, object: nil)
         }
     }
     static let shared = WorldClocksController()
-    static let worldClocksUpdatedNotification = Notification.Name("WorldClocksController.worldClocksUpdated")
+//    static let worldClocksUpdatedNotification = Notification.Name("WorldClocksController.worldClocksUpdated")
     static let zonesUpdatedNotification = Notification.Name("WorldClocksController.zonesUpdated")
 }

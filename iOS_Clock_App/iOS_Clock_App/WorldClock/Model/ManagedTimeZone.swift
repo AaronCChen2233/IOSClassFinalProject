@@ -53,6 +53,7 @@ class ManagedTimeZone: NSManagedObject {
             gmtOffset: timeZoneInfo.gmtOffset,
             timestamp: timeZoneInfo.timestamp,
             zoneName: timeZoneInfo.zoneName)
+        try? context.save()
         return timeZone
     }
 }

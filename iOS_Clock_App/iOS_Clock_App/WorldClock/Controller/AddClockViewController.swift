@@ -121,11 +121,10 @@ class AddClockViewController: FetchedResultsTableViewController {
         }
     }
     
-    private func updateWorldClockDatabase(with zone: Zone) {
+    private func updateWorldClockDatabase(with zone: Zone, at order: Int) {
         container.performBackgroundTask { context in
             context.perform {
-                _ = try? ManagedWorldClock.findOrCreateWorldClock(matching: zone, with: zone.zoneName, in: context)
-                try? context.save()
+                _ = try? ManagedWorldClock.findOrCreateWorldClock(matching: zone, with: zone.zoneName, at: order, in: context)
             }
         }
     }
@@ -196,7 +195,7 @@ extension AddClockViewController {
             return zone == didSelectZone
         }) {
             WorldClocksController.shared.worldClocks.worldClockList.append(didSelectZone)
-            self.updateWorldClockDatabase(with: didSelectZone)
+            self.updateWorldClockDatabase(with: didSelectZone, at: WorldClocksController.shared.worldClocks.worldClockList.count-1)
         }
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
