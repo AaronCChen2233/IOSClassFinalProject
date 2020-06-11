@@ -29,7 +29,7 @@ class AlarmTableViewController: UITableViewController {
         tableView.allowsSelectionDuringEditing = true
         tableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 
-        let center = UNUserNotificationCenter.current()
+//        let center = UNUserNotificationCenter.current()
         
         // get permisssion
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -51,11 +51,11 @@ class AlarmTableViewController: UITableViewController {
         printDatabaseStatistics()
         
         // count notification
-        center.getPendingNotificationRequests(completionHandler: { requests in
-            for request in requests {
-                print(request)
-            }
-        })
+//        center.getPendingNotificationRequests(completionHandler: { requests in
+//            for request in requests {
+//                print(request)
+//            }
+//        })
                 
     }
 
@@ -182,7 +182,7 @@ class AlarmTableViewController: UITableViewController {
       container.performBackgroundTask { [weak self] context in
         _ = try? ManagedAlarm.CreateOrUpdateAlarm(matching: alarm, with: searchId, in: context)
         try? context.save()
-        self?.printDatabaseStatistics()
+//        self?.printDatabaseStatistics()
       }
     }
     
@@ -190,7 +190,7 @@ class AlarmTableViewController: UITableViewController {
       container.performBackgroundTask { [weak self] context in
         _ = try? ManagedAlarm.DeleteAlarm(searchId: searchId, in: context)
         try? context.save()
-        self?.printDatabaseStatistics()
+//        self?.printDatabaseStatistics()
       }
     }
     
@@ -198,7 +198,7 @@ class AlarmTableViewController: UITableViewController {
       container.performBackgroundTask { [weak self] context in
         _ = try? ManagedAlarm.UpdateColumn(attribute: attribute, value: isOn, searchId: searchId, in: context)
         try? context.save()
-        self?.printDatabaseStatistics()
+//        self?.printDatabaseStatistics()
       }
     }
     
@@ -207,7 +207,7 @@ class AlarmTableViewController: UITableViewController {
       container.performBackgroundTask { [weak self] context in
         ManagedAlarm.ClearAllData(in: context)
         try? context.save()
-        self?.printDatabaseStatistics()
+//        self?.printDatabaseStatistics()
       }
     }
     

@@ -29,6 +29,7 @@ class AlarmTableViewCell: UITableViewCell {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         self.textLabel?.font = UIFont.systemFont(ofSize: 45.0)
         self.accessoryView = switchAlarm
+        self.editingAccessoryType = .disclosureIndicator
         switchAlarm.addTarget(self, action: #selector(tappedSwitch), for: .valueChanged)
     }
     
