@@ -219,7 +219,7 @@ class TimerViewController: UIViewController {
     
     @objc func selectWhenEndAction(){
         let selectSoundVC = SelectSoundTableViewController()
-        selectSoundVC.curSound = Sound.getAllSounds().first
+        selectSoundVC.curSound = sound
         selectSoundVC.didSelect = updateSound
         let navigationSelectionSoundVC = UINavigationController(rootViewController: selectSoundVC)
         navigationSelectionSoundVC.modalPresentationStyle = .fullScreen
