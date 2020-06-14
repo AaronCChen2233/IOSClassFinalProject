@@ -116,11 +116,11 @@ class TimerViewController: UIViewController {
         whenEndButton.setTitleColor(.white, for: .normal)
         whenEndButton.contentHorizontalAlignment = .left;
         whenEndButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        
+
         soundNameLable = UILabel()
         soundNameLable.textColor = .gray
         
-        /**test text*/
+        /**set sound text*/
         soundNameLable.text = sound.name.rawValue
         
         whenEndView.layer.cornerRadius = CGFloat(10);
@@ -130,7 +130,6 @@ class TimerViewController: UIViewController {
         whenEndView.addSubview(rightImageView)
         
         whenEndButton.matchParent()
-        
         soundNameLable.anchors(topAnchor: whenEndView.topAnchor, leadingAnchor: nil, trailingAnchor: rightImageView.leadingAnchor, bottomAnchor: whenEndView.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
         soundNameLable.centerYAnchor.constraint(equalTo: whenEndView.centerYAnchor).isActive = true
         rightImageView.anchors(topAnchor: nil, leadingAnchor: nil, trailingAnchor: whenEndView.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20), size: CGSize(width: 0, height: soundNameLable.frame.height))
@@ -153,7 +152,7 @@ class TimerViewController: UIViewController {
         circularProgress.anchors(topAnchor: view.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil,padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0), size: CGSize(width: 0, height: 380))
         cancelButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: nil, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth) )
         startPauseButton.anchors(topAnchor: timePicker.bottomAnchor, leadingAnchor: nil, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10), size: CGSize(width: buttonHeightAndWidth, height: buttonHeightAndWidth))
-        whenEndView.anchors(topAnchor: cancelButton.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 30, left: 10, bottom: 0, right: 10), size: CGSize(width: 50, height: 50))
+        whenEndView.anchors(topAnchor: cancelButton.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 30, left: 10, bottom: 0, right: 10), size: CGSize(width: 0, height: 50))
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -220,7 +219,7 @@ class TimerViewController: UIViewController {
     
     @objc func selectWhenEndAction(){
         let selectSoundVC = SelectSoundTableViewController()
-        selectSoundVC.curSound = Sound.getAllSounds().first
+        selectSoundVC.curSound = sound
         selectSoundVC.didSelect = updateSound
         let navigationSelectionSoundVC = UINavigationController(rootViewController: selectSoundVC)
         navigationSelectionSoundVC.modalPresentationStyle = .fullScreen
